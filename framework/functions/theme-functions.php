@@ -324,6 +324,32 @@ if ( !function_exists('sp_pagination') ) {
 	}
 
 }
+/* ---------------------------------------------------------------------- */
+/*	Strip string by words count
+/* ---------------------------------------------------------------------- */
+/*
+	* $str   = TEXT [string to process]
+	* $words = # [wordcount]
+	* $more  = TEXT ["..."]
+	*/
+	if ( ! function_exists( 'sp_string_length' ) ) {
+		function sp_string_length( $str, $words = 20, $more = '' ) {
+			if ( ! $str )
+				return;
+
+			$str = preg_replace( '/\s\s+/', ' ', $str );
+			$str = explode( ' ', $str, ( $words + 1 ) );
+
+			if ( count( $str ) > $words ) {
+				array_pop( $str );
+				$out = implode( ' ', $str ) . $more;
+			} else {
+				$out = implode( ' ', $str );
+			}
+
+			return $out;
+		}
+	} // /sp_string_length
 
 /* ---------------------------------------------------------------------- */
 /*	Taxonomy list
@@ -413,3 +439,27 @@ if ( !function_exists('sp_pagination') ) {
 			return $outArray;
 		}
 	} // /sp_pages
+	
+/* ---------------------------------------------------------------------- */
+/*	Prevent your email address from stealing (requires jQuery functions)
+/* ---------------------------------------------------------------------- */	
+	/*
+	* $email  = TEXT [email address to encrypt]
+	* $method = TEXT ["wp" encrypt method]
+	*/
+	if ( ! function_exists( 'sp_nospam' ) ) {
+		function sp_nospam( $email, $method = null ) {
+			if ( ! isset( $email ) || ! $email )
+				return;
+
+			if ( 'wp' == $method ) {
+				$email = antispambot( $email ); //wordpress functions
+			} else {
+				$email = strrev( $email );
+				$email = preg_replace( '[@]', ']ta[', $email );
+				$email = preg_replace( '[\.]', '/', $email );
+			}
+
+			return $email;
+		}
+	} // /sp_nospam	

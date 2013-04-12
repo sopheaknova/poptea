@@ -1,3 +1,4 @@
+<?php global $smof_data; ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7">
@@ -21,24 +22,34 @@
 	<title><?php wp_title('|', true, 'right'); ?></title>
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <!-- feeds, pingback -->
-    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS Feed" href="<?php echo ($data['feedburner'] == '') ? bloginfo( 'rss2_url' ) :  $data['feedburner']; ?>" />
+    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS Feed" href="<?php echo ($smof_data['feedburner'] == '') ? bloginfo( 'rss2_url' ) :  $smof_data['feedburner']; ?>" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     
-    <link rel="shortcut icon" href="<?php echo ($data['theme_favico'] == '') ? SP_BASE_URL.'favicon.ico' : $data['theme_favico']; ?>" type="image/x-icon" /> 
+    <link rel="shortcut icon" href="<?php echo ($smof_data['theme_favico'] == '') ? SP_BASE_URL.'favicon.ico' : $smof_data['theme_favico']; ?>" type="image/x-icon" /> 
     
 	<?php wp_head(); ?>
 </head>
 
 <body>
-<header class='container' id='header'> Logo Part </header>
+<header class="container clearfix" id="header">
+	<div class="logo">
+	  	<h2>
+        <a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>">
+		<?php if($smof_data['theme_logo'] !== '') : ?>
+        <img src="<?php echo $smof_data['theme_logo']; ?>" alt="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>">
+        <?php else: ?>
+        <h1><?php bloginfo('name'); ?></h1>
+        <?php endif; ?>
+        </a>
+        </h2>
+  	</div><!-- end .logo -->
+</header>
 
-<nav class='container' id='nav'>
-  <ul>
-    <li><a href='#'>Home</a></li>
-    <li><a href='#'>DEMOS</a></li>
-    <li><a href='#'>PROJECT</a></li>
-  </ul>
-</nav>
+<nav id="menu" class="container clearfix">
+
+    <?php echo sp_main_navigation(); ?>
+    
+</nav><!-- end .container.clearfix -->
 
 
 

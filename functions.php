@@ -50,7 +50,7 @@ if ( is_admin() && current_user_can( 'edit_posts' ) )
 
 // Add metaboxes
 require_once( SP_BASE_DIR . 'framework/meta-box/class.php' );
-require_once( SP_BASE_DIR . 'framework/meta-box/demo/demo.php' );
+require_once( SP_BASE_DIR . 'framework/meta-box/meta-boxes.php' );
 
 //Plugins activation
 if ( is_admin() && current_user_can( 'switch_themes' ) ) {

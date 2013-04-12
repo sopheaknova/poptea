@@ -31,11 +31,11 @@ function my_theme_register_required_plugins() {
 			),
 			// From the WordPress Plugin Repository
 			
-			array(
+			/*array(
 				'name'     => 'WooCommerce - excelling eCommerce',
 				'slug'     => 'woocommerce',
 				'required' => false,
-			),
+			),*/
 	);
 
 	/**

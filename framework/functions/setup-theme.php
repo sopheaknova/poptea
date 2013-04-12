@@ -46,10 +46,11 @@ function sp_theme_setup() {
 	add_image_size( 'medium', 211, null, true );
 	
 	add_image_size( 'widget', 60 , 60, true ); //small widget squere image, cropped
+	add_image_size( 'product-thumb', 144, 176, true );
 	add_image_size( 'slideshow-header', 980, 250, true );
 	
 	// Add support for post formats
-	add_theme_support( 'post-formats', array( 'audio', 'video', 'link' ) ); // aside, gallery, image, link, quote, video, audio
+	add_theme_support( 'post-formats', array( 'video' ) ); // aside, gallery, image, link, quote, video, audio
 	
 	// Add default post and comments RSS feed links to head
 	add_theme_support('automatic-feed-links');
@@ -344,29 +345,8 @@ add_filter('admin_footer_text', 'sp_modify_footer_admin');
 /*	Other hook
 /* ---------------------------------------------------------------------- */
 
-// Sets the post excerpt length by word
-function sp_excerpt_length( $length ) {
-	global $post;
-	
-	$content = $post->post_content;
-	$words = explode(' ', $content, $length + 1);
-	if(count($words) > $length) :
-		array_pop($words);
-		array_push($words, '...');
-		$content = implode(' ', $words);
-	endif;
-  
-	$content = strip_tags(strip_shortcodes($content));
-  
-	return $content;
-
-}
-add_filter('excerpt_length', 'sp_excerpt_length');
-
-add_filter('excerpt_more', 'sp_auto_excerpt_more');
-add_filter( 'widget_text', 'shortcode_unautop');
-
 // Enable shortcodes in text widgets
+add_filter( 'widget_text', 'shortcode_unautop');
 add_filter('widget_text', 'do_shortcode');
 
 

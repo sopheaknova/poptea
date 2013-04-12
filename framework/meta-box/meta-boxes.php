@@ -39,10 +39,10 @@ $meta_boxes[] = array(
 				//''     => '<img src="' . SP_BASE_URL . 'framework/assets/img/xcol.png" alt="' . __('Use theme default setting', 'sptheme_admin') . '" title="' . __('Use theme default setting', 'sptheme_admin') . '" />',
 				'1col' => '<img src="' . SP_BASE_URL . 'framework/assets/img/1col.png" alt="' . __('Fullwidth - No sidebar', 'sptheme_admin') . '" title="' . __('Fullwidth - No sidebar"', 'sptheme_admin') . ' />',
 				//'2cl'  => '<img src="' . SP_BASE_URL . 'framework/assets/img/2cl.png" alt="' . __('Sidebar on the left', 'sptheme_admin') . '" title="' . __('Sidebar on the left', 'sptheme_admin') . '" />',
-				//'2cr'  => '<img src="' . SP_BASE_URL . 'framework/assets/img/2cr.png" alt="' . __('Sidebar on the right', 'sptheme_admin') . '" title="' . __('Sidebar on the right', 'sptheme_admin') . '" />',
-				'3col' => '<img src="' . SP_BASE_URL . 'framework/assets/img/3col.png" alt="' . __('Sidebar on left and right', 'sptheme_admin') . '" title="' . __('Sidebar on left and right', 'sptheme_admin') . '" />'
+				'2cr'  => '<img src="' . SP_BASE_URL . 'framework/assets/img/2cr.png" alt="' . __('Sidebar on the right', 'sptheme_admin') . '" title="' . __('Sidebar on the right', 'sptheme_admin') . '" />',
+				//'3col' => '<img src="' . SP_BASE_URL . 'framework/assets/img/3col.png" alt="' . __('Sidebar on left and right', 'sptheme_admin') . '" title="' . __('Sidebar on left and right', 'sptheme_admin') . '" />'
 			),
-			'std'  => '3col',
+			'std'  => '2cr',
 			'desc' => __('select the layout structure for this page.', 'sptheme_admin')
 		),
 		array(
@@ -57,74 +57,23 @@ $meta_boxes[] = array(
 
 
 /* ---------------------------------------------------------------------- */
-/*	Gallery
+/*	Menu
 /* ---------------------------------------------------------------------- */
 
 $meta_boxes[] = array(
-	'id'       => 'album-images',
-	'title'    => __('Album Images', 'sptheme_admin'),
-	'pages'    => array('gallery'),
+	'id'       => 'product-price',
+	'title'    => __('Product price', 'sptheme_admin'),
+	'pages'    => array('sp_menu'),
 	'context'  => 'normal',
 	'priority' => 'high',
 	'fields'   => array(
 		array(
-			'name' => __('Add media files from your computer', 'sptheme_admin'),
-			'id'   => $prefix . 'album_images',
-			'type' => 'plupload_image',
+			'name' => __('Enter the price of products. ', 'sptheme_admin'),
+			'id'   => $prefix . 'product_price',
+			'type' => 'text',
 			'std'  => '',
-			'desc' => ''
+			'desc' => 'e.g: 9.00. do not put currency'
 		)
-	)
-);
-
-/* ---------------------------------------------------------------------- */
-/*	Events
-/* ---------------------------------------------------------------------- */
-
-$meta_boxes[] = array(
-	'id'       => 'events-settings',
-	'title'    => __('Events setting', 'sptheme_admin'),
-	'pages'    => array('events'),
-	'context'  => 'normal',
-	'priority' => 'high',
-	'fields'   => array(
-		array(
-			'name'    => 'Is it neat event?',
-			'id'      => $prefix . 'neat_event',
-			'type'    => 'checkbox',
-			'std'  => 1,
-		),
-		
-		array(
-			'name' => 'Event start date',
-			'id'   => $prefix . 'event_start_date',
-			'type' => 'date',
-
-			// jQuery date picker options. See here http://jqueryui.com/demos/datepicker
-			'js_options' => array(
-				'appendText'      => '(dd-M-yyyy)',
-				'dateFormat'      => 'dd-M-yy',
-				'changeMonth'     => true,
-				'changeYear'      => true,
-				'showButtonPanel' => true,
-			),
-		),
-		
-		array(
-			'name' => 'Event end date',
-			'id'   => $prefix . 'event_end_date',
-			'type' => 'date',
-
-			// jQuery date picker options. See here http://jqueryui.com/demos/datepicker
-			'js_options' => array(
-				'appendText'      => '(dd-M-yyyy)',
-				'dateFormat'      => 'dd-M-yy',
-				'changeMonth'     => true,
-				'changeYear'      => true,
-				'showButtonPanel' => true,
-			),
-		)
-		
 	)
 );
 

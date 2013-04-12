@@ -353,7 +353,6 @@ jQuery(document).ready(function($){
 		});	
 	});
 	
-	//Add new sidebar
 	$(".sidebar_add_button").live('click', function(){		
 		var slidesContainer = $(this).prev();
 		var sliderId = slidesContainer.attr('id');
@@ -376,10 +375,11 @@ jQuery(document).ready(function($){
 		$('.temphide').fadeIn('fast', function() {
 			$(this).removeClass('temphide');
 		});
+				
+		//of_image_upload(); // re-initialise upload image..
 		
 		return false; //prevent jumps, as always..
 	});	
-	
 	
 	/**	Sorter (Layout Manager) */
 	jQuery('.sorter').each( function() {
