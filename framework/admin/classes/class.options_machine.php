@@ -386,11 +386,7 @@ class Options_Machine {
 					$output .= '<div class="slider"><ul id="'.$value['id'].'" rel="'.$int.'">';
 					$slides = $data[$value['id']];
 					$count = count($slides);
-					if ($count < 1) {
-						$oldorder = 1;
-						$order = 1;
-						//$output .= Options_Machine::optionsframework_sidebar_function($value['id'],$value['std'],$oldorder,$order,$int);
-					} else {
+					if ($count >= 1 && !empty($slides)) {
 						$i = 0;
 						foreach ($slides as $slide) {
 							$oldorder = $slide['order'];
