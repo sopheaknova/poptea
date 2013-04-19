@@ -158,10 +158,13 @@ function sp_register_scripts() {
 	/* Register our scripts -----------------------------------------------------*/
 	/*wp_deregister_script('jquery');
 	wp_register_script( 'jquery',   'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', array(), '1.8.2', false ); //use for online */
-	wp_register_script( 'modernizr_custom',  SP_BASE_URL . 'js/modernizr.custom.js', array(), '2.5.3', false );
-	wp_register_script( 'video-js',          SP_BASE_URL . 'js/video-js.min.js', array(), '3.2.0', false );
-	wp_register_script( 'selectivizr',       SP_BASE_URL . 'js/selectivizr-and-extra-selectors.min.js', array('jquery'), '1.0.2', true );
-	wp_register_script( 'audioplayerv1',     SP_BASE_URL . 'js/audioplayerv1.min.js', array('jquery'), '1.0', true ); 
+	wp_register_script( 'modernizr_custom',  SP_BASE_URL . 'js/modernizr.custom.js', array(), THEME_VERSION, false );
+	wp_register_script( 'video-js',          SP_BASE_URL . 'js/video-js.min.js', array(), THEME_VERSION, false );
+	wp_register_script( 'selectivizr',       SP_BASE_URL . 'js/selectivizr-and-extra-selectors.min.js', array('jquery'), THEME_VERSION, true );
+	wp_register_script( 'audioplayerv1',     SP_BASE_URL . 'js/audioplayerv1.min.js', array('jquery'), THEME_VERSION, true ); 
+	wp_register_script( 'jquery-cycle',       SP_BASE_URL . 'js/jquery.cycle.all.min.js', array('jquery'), THEME_VERSION, true );
+	wp_register_script( 'jquery-easing',     SP_BASE_URL . 'js/jquery.easing-1.3.min.js', array('jquery'), THEME_VERSION, true ); 
+	
 
 	// PrettyPhoto script
 	if( !WP_PRETTY_PHOTO_PLUGIN_ACTIVE ) {
@@ -180,6 +183,8 @@ function sp_enqueue_scripts() {
 		wp_enqueue_script('jquery-ui-widget');
 		wp_enqueue_script('modernizr_custom');
 		wp_enqueue_script('video-js');
+		wp_enqueue_script('jquery-cycle');
+		wp_enqueue_script('jquery-easing');
 		
 		// For Internet Explorer
 		global $is_IE;
@@ -193,7 +198,7 @@ function sp_enqueue_scripts() {
 			wp_enqueue_script('pretty_photo_lib');
 			wp_enqueue_script('custom_pretty_photo');	
 		}	
-		//wp_enqueue_script('custom_scripts');
+		wp_enqueue_script('custom_scripts');
 	}
 }
 

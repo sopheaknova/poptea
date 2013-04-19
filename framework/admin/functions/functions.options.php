@@ -138,8 +138,15 @@ $of_options[] = array( 	"name" 		=> "Footer Text",
 				);
 				
 // Contact
+
 $of_options[] = array( "name" => "Contact",
 					"type" => "heading");
+
+$of_options[] = array( "name" => 'Select Page Contact',
+					"id" => "page_contact",
+					"type" => "select",
+					"options" => $of_pages
+					);
 					
 $of_options[] = array( "name" => "Latitude",
 					"desc" => "Latitude of google map see <a href='http://itouchmap.com'>itouchmap.com</a>",
@@ -197,8 +204,19 @@ $of_options[] = array( "name" => "Email",
 					"type" => "text"
 					);			
 
+// Pop Tea Menu
+
+$of_options[] = array( "name" => "Poptea Menu",
+					"type" => "heading");
+
+$of_options[] = array( "name" => 'Select Page Menu',
+					"id" => "page_menu",
+					"type" => "select",
+					"options" => $of_pages
+					);
 
 //Sidebar Settings
+
 $of_options[] = array( "name" => "Sidebar Settings",
 					"type" => "heading");
 

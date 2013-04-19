@@ -40,7 +40,6 @@
 	if ( ! function_exists( 'sp_create_taxonomies' ) ) {
 		function sp_create_taxonomies() {
 			$slugMenuCategory = 'menu/category';
-			$slugMenuType     = 'menu/type';
 			
 				register_taxonomy( 'menu-category', 'sp_menu', array(
 					'hierarchical'      => true,
@@ -60,24 +59,7 @@
 						'new_item_name' => __( 'New category title', 'sptheme_admin' )
 					)
 				) );
-				register_taxonomy( 'menu-type', 'sp_menu', array(
-					'hierarchical'      => false,
-					'show_in_nav_menus' => false,
-					'show_ui'           => true,
-					'query_var'         => 'menu-type',
-					'rewrite'           => array( 'slug' => $slugMenuType ),
-					'labels'            => array(
-						'name'          => __( 'Menu types', 'sptheme_admin' ),
-						'singular_name' => __( 'Menu type', 'sptheme_admin' ),
-						'search_items'  => __( 'Search types', 'sptheme_admin' ),
-						'all_items'     => __( 'All types', 'sptheme_admin' ),
-						'parent_item'   => __( 'Parent type', 'sptheme_admin' ),
-						'edit_item'     => __( 'Edit type', 'sptheme_admin' ),
-						'update_item'   => __( 'Update type', 'sptheme_admin' ),
-						'add_new_item'  => __( 'Add new type', 'sptheme_admin' ),
-						'new_item_name' => __( 'New type title', 'sptheme_admin' )
-					)
-				) );
+				
 		}
 	} // /sp_create_taxonomies
 

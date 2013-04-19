@@ -76,6 +76,33 @@ $meta_boxes[] = array(
 		)
 	)
 );
+/* ---------------------------------------------------------------------- */
+/*	Slide
+/* ---------------------------------------------------------------------- */
+$meta_boxes[] = array(
+	'id'      => 'product-slide',
+	'title'   => __('Product Slide', 'sptheme_admin'),
+	'pages'   => array('sp_slide'),
+	'context' => 'normal',
+	'priority'=> 'high',
+	'fields'  => array(
+		array(
+			'name'  => __('Enter the promotion of products.', 'sptheme_admin'),
+			'id'    => $prefix.'product_promotion',
+			'type'  => 'text',
+			'std'   => '',
+			'desc'  => 'e.g: New promotion'
+		),
+		array(
+			'name'  => __('Enter the url of product detail.', 'sptheme_admin'),
+			'id'    => $prefix.'product_url',
+			'type'  => 'text',
+			'std'   => '',
+			'desc'  => 'e.g: http://localhost/nova-development/wp/?page_id=9'
+		)
+	)
+);
+
 
 /* ---------------------------------------------------------------------- */
 /*	Post Format: Video
