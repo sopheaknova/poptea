@@ -11,7 +11,20 @@ if (!function_exists('of_options'))
 		$of_categories_obj 	= get_categories('hide_empty=0');
 		foreach ($of_categories_obj as $of_cat) {
 		    $of_categories[$of_cat->cat_ID] = $of_cat->cat_name;}
-		$categories_tmp 	= array_unshift($of_categories, "Select a category:");    
+		$categories_tmp 	= array_unshift($of_categories, "Select a category:"); 
+
+		//Access the WordPress Catgories Taxonomy of Custom Post Type Menu
+		$of_cats         = array();
+		$args = array(
+                'type'          => 'sp_menu',
+                'orderby'       => 'name', 
+                'taxonomy'      => 'menu-category',
+            );
+            $of_cats_obj = get_categories( $args ); 
+        foreach ($of_cats_obj as $cat){
+             $of_cats[$cat->cat_ID] = $cat->cat_name;
+        } 
+        $cat_tmp 	= array_unshift($of_cats, "Select a category:");   
 	       
 		//Access the WordPress Pages via an Array
 		$of_pages 			= array();
@@ -214,6 +227,12 @@ $of_options[] = array( "name" => 'Select Page Menu',
 					"type" => "select",
 					"options" => $of_pages
 					);
+$of_options[] = array( "name" => 'Select Category Taxonomy Popular Drink',
+					"id" => "cat_menu",
+					"type" => "select",
+					"options" => $of_cats
+					);
+
 
 //Sidebar Settings
 

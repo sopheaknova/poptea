@@ -118,22 +118,31 @@ class sp_contact_info_widget extends WP_Widget {
 		if ( ( isset( $name ) && $name ) || ( isset( $address ) && $address ) )
 			$outAddress .= '<div class="address contact-info"><strong>' . $name . '</strong><br />' . $address . '</div>';
 
-		//phone numbers
-		if ( isset( $phone ) && $phone )
-			$outAddress .= '<div class="phone contact-info">' . $phone . '</div>';
 
 		//email addresses
 		if ( isset( $email ) && $email ) {
-			$regex = '/(\S+@\S+\.\S+)/i';
-			preg_match_all( $regex, $email, $emailArray );
-			if ( $emailArray && is_array( $emailArray ) ) {
-				foreach ( $emailArray[0] as $e ) {
-					$email = str_replace( $e, '<a href="#" data-address="' . sp_nospam( $e ) . '" class="email-nospam">' . sp_nospam( $e ) . '</a>', $email );
-				}
-			}
-			$outAddress .= '<div class="email contact-info">' . $email . '</div>';
+			//$regex = '/(\S+@\S+\.\S+)/i';
+			//preg_match_all( $regex, $email, $emailArray );
+			//if ( $emailArray && is_array( $emailArray ) ) {
+			//	foreach ( $emailArray[0] as $e ) {
+			//		$email = str_replace( $e, '<a href="#" data-address="' . sp_nospam( $e ) . '" class="email-nospam">' . sp_nospam( $e ) . '</a>', $email );
+			//	}
+			//}
+			$outAddress .= '<div class="email contact-info">E-mail : <a href="#">' . $email . '</a></div>';
 		}
 
+		//phone numbers
+		if ( isset( $phone ) && $phone )
+			if(strpos($phone, '/')){
+				$split = explode('/', $phone);
+		        foreach ($split as $spl) {
+		    	  $outAddress .= '<div class="phone contact-info"><h1>'.$spl.'</h1></div>';
+		        }
+            }
+			else {
+				$outAddress .= '<div class="phone contact-info"><h3>' . $phone . '</h3></div>';
+			}
+			
 		//output wrapper
 		if ( $outAddress )
 			$out .= '<div class="address-container">' . apply_filters( 'sp_default_content_filters', $outAddress ) . '</div>';
