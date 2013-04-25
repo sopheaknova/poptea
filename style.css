@@ -417,12 +417,10 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
            font-size:14px;
            font-weight:normal;
     }
-    ul.menu-nav li a:hover, ul.menu-nav li.current-menu-parent ul li.current-menu-item {
-        background-color: #fe590b;
-    }
-    ul.menu-nav li:last-child a:hover{
+    ul.menu-nav li a:hover, ul.menu-nav li.current-menu-parent, ul li.current-menu-item, ul li.current_page_item{
         background-color: #86A22F;
     }
+    
     ul.menu-nav li ul li ul {
            left:200px;
            top:0;
