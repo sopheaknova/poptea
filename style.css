@@ -799,6 +799,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             margin-top: 18px;
             overflow: hidden;
             font-size: 14px;
+			min-width:540px;
         }
         .top-info span#right{
             float: right;
@@ -913,14 +914,12 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
     /* -------------------------------------------------- */
     /*  Contact
     /* -------------------------------------------------- */
-    .contact-map{
-        margin: 0px;
-        padding: 0px;
+    #contact-map{
         height: 660px;
-        overflow: hidden;
         background: #F4F3EF;
         border-bottom: 6px solid #682B7F;
     }
+		.entry-contact{padding:20px 0 50px;}
         .contact-address, .contact-form{
             padding-bottom: 150px;
         }
@@ -977,7 +976,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
         margin-right: 17px;
     }
     form.contact-page .message{
-        width:562px;
+        width:580px;
         overflow: hidden;  
         height: 90px;  
     }
@@ -1245,6 +1244,68 @@ table tbody tr:hover td {
         border-top:1px solid #d8d8d8;   
         padding-top:10px;
     }
+	
+/* ---------------------------------------------------------------------- */
+/*  Columns
+/* ---------------------------------------------------------------------- */
+
+.one_half, .one_third, .two_third, .three_fourth, .two_fourth, .one_fourth, .one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_sixth, .two_sixth, .three_sixth, .four_sixth, .five_sixth {
+    position: relative;
+    margin-right: 4%;
+    float: left;
+    /*overflow:hidden;*/
+}
+.one_half {
+    width: 48%;
+}
+.one_third {
+    width: 30.6666%;
+
+}
+.two_third {
+    width: 65.3332%;
+}
+.one_fourth {
+    width: 22%;
+}
+.two_fourth {
+    width: 48%;
+}
+.three_fourth {
+    width: 74%;
+}
+.one_fifth {
+    width: 16.8%;
+}
+.two_fifth {
+    width: 37.6%;
+}
+.three_fifth {
+    width: 58.4%;
+}
+.four_fifth {
+    width: 79.2%;
+}
+.one_sixth {
+    width: 13.3333%;
+}
+.two_sixth {
+    width: 30.6666%;
+}
+.three_sixth {
+    width: 47.9998%;
+}
+.four_sixth {
+    width: 65.3332%;
+}
+.five_sixth {
+    width: 82.6665%;
+}
+.last {
+    margin-right: 0 !important;
+    clear: right;
+}
+	
 /* -------------------------------------------------- */
 /*  Pagination
 /* -------------------------------------------------- */
