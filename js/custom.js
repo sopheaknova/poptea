@@ -30,9 +30,10 @@ jQuery(document).ready(function($){
                     randomizeEffects: 0,
                     speed: 3000,
                     timeout: 6000,
+                    slideExpr: '.item-slide',
                     pagerEvent: 'mouseover',
-                    before: onBefore,
-                    after: onAfter,
+                    //before: onBefore,
+                    //after: onAfter,
                     pager: ".slide-nav"
             });
        
@@ -44,27 +45,12 @@ jQuery(document).ready(function($){
 		        //$(this).find("img").css({'display':'block'}).delay(500).stop().animate(
 		                                                                    // {'margin-left':'0px'
 		                                                                    // }, 1200, 'easeInOutElastic');//easeOutQuad
-		        $(".slide-content").css({'display':'block'}).delay(200).stop().animate(
+		        $(this).find(".slide-content").css({'display':'block'}).delay(200).stop().animate(
 		                                                                     {'margin-top':'-410px'
 		                                                                     }, 1000, 'easeInOutElastic');//easeOutQuad
 		    }
 
-    // ========= GALLERY ========= //
-    $('.item-desc').css({'display':'none'}).hide();//css({'display':'none'})
-    $('.item-gallery').hover(function(){
-    	$(this).find('.item-img').css({
-    		        'z-index':'100',
-    		        'border-radius':'6px',
-    		        '-moz-border-radius':'6px',
-    		        '-webkit-border-radius':'6px'
-                   });
-        $(this).find('.item-desc').css({'z-index':'30'}).show(400);
-    	$(this).find('.item-img h6').hide();
-    },function(){
-   	    $(this).find('.item-desc').hide();//css({'display':'none'})
-   	    $(this).find('.item-img').css({'z-index':'0',});
-        $(this).find('.item-img h6').show();
-    });
+    
     // ========= WIDGET SLIDES ========= //
     $('.widget-slide').cycle({
                     fx: 'scrollRight', 
@@ -91,26 +77,55 @@ jQuery(document).ready(function($){
                     pager: 'ul.slider-nav',
                     timeout: 8000,
                     slideExpr: '.slides',
-                    next: '#top-next',
-                    prev: '#top-prev',
+                    next: '.top-next',
+                    prev: '.top-prev',
                     pagerAnchorBuilder: function(idx, slide) { 
                     // return selector string for existing anchor 
                     return 'ul.slider-nav li:eq(' + idx + ') a'; 
-                    } 
-
-                   
+                    } ,
+                    after: onAfter
+ 
             });
 
-    // ========= Overflow Menu Gallery ========= //
-    $('.item-gallery').hover(function(){
-         $('.inner-menu').css('overflow', 'visible');
-         $('.gallery').css('overflow','visible');
-    },function(){
-         $('.inner-menu').css('overflow', 'hidden');
-         $('.gallery').css('overflow','hidden');
-    });
+      function onAfter(curr, next, opts, fwd) {
+      var $ht = $(this).height();
+    
+      //set the container's height to that of the current slide
+      $(this).parent().animate({height: $ht});
+    }
 
+    // ========= Tabs for Menu Options ========= //
 
+    (function() {
+
+        var $tabsMenuNav    = $('.tabs-menu'),
+            $tabsMenuNavLis = $tabsMenuNav.children('li'),
+            $tabContent = $('.tab-menu-content');
+
+        $tabsMenuNav.each(function() {
+            var $this = $(this);
+
+            $this.parent().next().children('.tab-menu-content').hide()
+                                                 .first().show()
+                                                 .css('background-color','#ffffff');
+
+            $this.children('li').first().addClass('active').show();
+        });
+
+        $tabsMenuNavLis.on('click', function(e) {
+            var $this = $(this);
+
+            $this.siblings().removeClass('active').end()
+                 .addClass('active');
+            
+            $this.parent().parent().next().children('.tab-menu-content').hide()
+                                                          .siblings( $this.find('a').attr('href') ).fadeIn()
+                                                          .css('background-color','#ffffff');
+
+            e.preventDefault();
+        });
+
+    })();   // end menu tab
 })
     
 

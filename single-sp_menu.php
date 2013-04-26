@@ -6,25 +6,29 @@
 
 <div class="container">
 	<div class="content-inner clearfix">
-       
-        <div class="menu-content">
-        	        
- 	   	<h1><?php single_cat_title();?></h1>
 
- 	   	<?php if(category_description()){?>
+		<div class="main">
+        <?php if(is_single()) { ?>
+		<h1 class="title"><?php the_title(); ?></h1>
+        <?php } ?>
 
- 	   	<p><?php echo category_description();?></p>
- 	   	<?php }?>
-
-	 	</div>
-	 	<div class="main">
 		<?php if ( have_posts() ) : ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( have_posts() ) :the_post(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
+                
+                <div class="entry-meta">
+                
+                <?php echo sp_custom_meta(); ?>
 
-					<?php get_template_part( 'content', get_post_format() ); ?>
+                </div><!-- end .entry-meta -->
+
+                <?php if(has_post_thumbnail()){
+                the_post_thumbnail('product-thumb');
+			    }?>
+
+                <p><?php echo sp_post_content(); ?><p>
 
 				</article><!-- end .hentry -->
 
@@ -57,5 +61,4 @@
 </div><!-- end .container.clearfix -->    
 
 </section><!-- end #content -->
-
 <?php get_footer(); ?>

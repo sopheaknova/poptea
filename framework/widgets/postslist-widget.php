@@ -190,9 +190,11 @@ class sp_post_list_widget extends WP_Widget {
 		echo $before_widget;
 
 		//if the title is not filled, no title will be displayed
-		if ( isset( $title ) && '' != $title && ' ' != $title )
+		if ( isset( $title ) && '' != $title && ' ' != $title ){
 			echo $before_title . apply_filters( 'widget_title', $title ) . $after_title;
-
+		}
+			
+            
 		wp_reset_query();
 
 		$posts = new WP_Query( array(
@@ -216,6 +218,7 @@ class sp_post_list_widget extends WP_Widget {
 			<ul class="<?php echo $class; ?>">
 			<?php
 			$imgSize = 'widget';
+			$imgSize = trim($imgSize);
 
 			while ( $posts->have_posts() ) : $posts->the_post();
 				$out = '<li>';
@@ -244,13 +247,37 @@ class sp_post_list_widget extends WP_Widget {
 				if ( ! isset( $disableThumbnail ) )
 					$out .= '<div class="image-container"><a href="' . get_permalink() . '">' . $image . '</a></div>';
 
+                /* add div cover title, date, excerpt */
+                $get_class = has_post_thumbnail()? 'widget-info': '';
+
+                $out .= '<div class= '.$get_class.'>';
 				//title
-				$out .= '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+				if(has_post_thumbnail()){
+
+			    $out .= '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+                }else{
+                
+                $out .= '<h3><a class="no-thumbnail" href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+				}
+				/* add hr for title */
+				$get_title = get_the_title();
+				if(isset($get_title) && $get_title!= '' && $get_title!= ' '){
+                $out .= '<hr class="grey">';
+				}
 
 				//date
-				if ( ! isset( $date ) )
-					$out .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '" class="date">' . esc_html( get_the_date() ) . '</time>';
+				$get_date = get_the_date();
+				if($excerptLength > 0){
+                    
+                   if ( ! isset( $date ) )
+				   $out .= '<div datetime="' . esc_attr( get_the_date( 'c' ) ) . '" class="date">' . esc_html( "Posted on: ".$get_date ) . '</div>';
 
+				}else{
+				   if ( ! isset( $date ) )
+				   $out .= '<div datetime="' . esc_attr( get_the_date( 'c' ) ) . '" class="date">' . esc_html( $get_date ) . '</div>';
+
+				}
+				
 				//excerpt
 				if ( isset( $excerptLength ) && $excerptLength ) {
 					$content = sp_string_length( strip_tags( $content ), $excerptLength, '&hellip;' );
@@ -258,6 +285,8 @@ class sp_post_list_widget extends WP_Widget {
 						$out .= '<div class="excerpt">' . $content . '</div>';
 				}
 
+				$out .= '</div>';
+                
 				echo $out . '</li>';
 			endwhile;
 			?>

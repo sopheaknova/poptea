@@ -164,7 +164,7 @@ if( !function_exists('sp_post_content')) {
 
 		}
 		else {
-			$output = '<p>' . sp_excerpt_length(10) . '</p>';	
+			$output = '<p>' . sp_excerpt_length(20) . '</p>';	
 			//$output = '<p>' . sp_excerpt_string_length(350) . '</p>';
 			$output .= '<a href="'.get_permalink().'" class="learn-more button">' . __( 'Read more »', 'sptheme' ) . '</a>';
 		}
@@ -194,7 +194,24 @@ if( !function_exists('sp_post_meta')) {
 	}
 
 }
+/* ---------------------------------------------------------------------- */
+/*	Show the custom post type taxonomy ( date, categories )
+/* ---------------------------------------------------------------------- */
+if( !function_exists('sp_custom_meta')) {
 
+	function sp_custom_meta() {
+
+		global $post;
+		
+		$output = '<span>' . __('By: ', 'sptheme_admin') . '</span>';
+		$output .= '<span class="title">' . get_the_author() . ' &mdash; </span>';
+		$output .= sp_posted_on() . ' &mdash; ';
+		$output .= '<span class="post-categories">' . get_the_term_list( $post->ID, 'menu-category', ' in: ', ', ', '' ). '</span>';
+		
+		return $output;
+	}
+
+}
 /* ---------------------------------------------------------------------- */
 /*	The current post—date/time
 /* ---------------------------------------------------------------------- */

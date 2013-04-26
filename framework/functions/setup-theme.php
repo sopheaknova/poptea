@@ -44,9 +44,9 @@ function sp_theme_setup() {
 	
 	add_image_size( 'large', 429, null, true );
 	add_image_size( 'medium', 211, null, true );
-	
-	add_image_size( 'widget', 60 , 60, true ); //small widget squere image, cropped
-	add_image_size( 'product-thumb', 144, 176, true );
+	add_image_size( 'standart-post',625,235, true);
+	add_image_size( 'widget',71,66, true ); //small widget squere image, cropped
+	add_image_size( 'product-thumb', 200, 200, true );
 	add_image_size( 'slideshow-header', 980, 250, true );
 	
 	// Add support for post formats
@@ -146,6 +146,25 @@ function sp_enqueue_styles() {
 
 }
 add_action('wp_print_styles', 'sp_enqueue_styles');
+
+// Sets the post excerpt length by word
+function sp_excerpt_length( $length ) {
+	global $post;
+	
+	$content = $post->post_content;
+	$words = explode(' ', $content, $length + 1);
+	if(count($words) > $length) :
+		array_pop($words);
+		array_push($words, '...');
+		$content = implode(' ', $words);
+	endif;
+  
+	$content = strip_tags(strip_shortcodes($content));
+  
+	return $content;
+
+}
+add_filter('excerpt_length', 'sp_excerpt_length');
 
 
 /* ---------------------------------------------------------------------- */
