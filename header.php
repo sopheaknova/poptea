@@ -14,7 +14,7 @@
 <!--<![endif]-->
 
 <head>
-<title>Responsive Design with CSS</title>
+<title><?php wp_title('|', true, 'right'); ?></title>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -30,15 +30,6 @@
 </head>
 
 <body>
-
-<!--
-<nav id="menu" class="container clearfix">
-
-    <?php //echo sp_main_navigation(); ?>
-    
-</nav> -->
-
-<!--                sample               -->
 <div class="header">
       <div class="header-content">
             <div class="logo">

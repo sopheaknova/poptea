@@ -22,7 +22,7 @@
  	   </div>
  </div>
  <!-- end .footer-bottom -->
-<?php //echo $smof_data['google_analytics']; ?>
+<?php echo $smof_data['google_analytics']; ?>
 <?php wp_footer(); ?>
 
 </body>
