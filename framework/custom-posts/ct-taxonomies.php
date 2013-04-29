@@ -40,6 +40,7 @@
 	if ( ! function_exists( 'sp_create_taxonomies' ) ) {
 		function sp_create_taxonomies() {
 			$slugMenuCategory = 'menu/category';
+			//$slugMenuSpecial  = 'menu/special';
 			
 				register_taxonomy( 'menu-category', 'sp_menu', array(
 					'hierarchical'      => true,
@@ -59,6 +60,7 @@
 						'new_item_name' => __( 'New category title', 'sptheme_admin' )
 					)
 				) );
+				
 				
 		}
 	} // /sp_create_taxonomies

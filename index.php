@@ -1,3 +1,4 @@
+
 <?php get_header(); ?>
 <?php global $smof_data; ?>
 <?php $cp_query = new WP_Query(array('post_type'=>'sp_slide','posts_per_page'=>4)); ?>
@@ -31,48 +32,33 @@
  <div class="main-container">
 	 <div class="container">
 	 	  <div class="gallery clearfix">
-            <?php 
-            /*$args = array(
-                'type'          => 'sp_menu',
-                'orderby'       => 'name', 
-                'taxonomy'      => 'menu-category',
-            );
-            $cats = get_categories( $args ); 
-
-            foreach($cats as $cat){
-              //if($cat->name =='POPULAR DRINK'){
-                // $popular = 
-               echo $cat->term_id." = ".$cat->name."<br>";
-              //}
-            } */?>
+           
             <?php $cat_menu = $smof_data['cat_menu'];?>
             <?php $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu));?>
             <?php if($query->have_posts()):?>
 
-            <h3><a href="#"><?php echo $cat_menu;?></a></h3> 
+            <h3><a><?php echo $cat_menu;?></a></h3> 
+            <section class="gallery-hover clearfix">
             <?php while($query->have_posts()): $query->the_post();?>
-            <div class="item-gallery">
-                  <div class="item-img">
-                  <?php if(has_post_thumbnail()){
-                     the_post_thumbnail();
-                  }?>
-                  <h6><?php the_title();?><h6>
-                  </div>
-                  <div class="item-desc">
-                        
-                        <div class="desc-detail">
-                         <h5><?php the_title();?></h5>
-                         <?php the_excerpt();?>
-                         <h6><a href="<?php the_permalink(); ?>">VIEW DETAIL</a></h6>
+            
+                    <div class="view view-fifth">
+                        <?php if(has_post_thumbnail()){
+                        the_post_thumbnail('product-thumb');
+                        }?>
+                        <div class="mask">
+                            <h2><?php the_title();?></h2>
+                            <p><span class="price">
+                            <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
+                            echo $meta_price!=''?$meta_price.' $':'';?>
+                            </span></p>
+                            <a href="<?php the_permalink(); ?>" class="info">VIEW DETAIL</a>
                         </div>
-                        <div class="social-network">
-                           Share it to:
-                           <img src="<?php bloginfo('template_url');?>/images/facebook-like.jpg" width="248" height="29"/> 
-                        </div>
-                  </div>
-            </div>
-            <!-- end .item-gallery -->
+                    </div> 
+            
             <?php endwhile;?>
+            </section>
+            <!-- END Gallery Hover Effects -->
+            <div class="clearfix"></div>
             <div class="view-full-menu">
                <?php $menu_page = $smof_data['page_menu'];?>
                       <?php $menu_slug = get_page_by_path($menu_page); // get page by slug name?>

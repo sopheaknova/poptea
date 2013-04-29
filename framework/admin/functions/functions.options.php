@@ -215,7 +215,23 @@ $of_options[] = array( "name" => "Email",
 					"id" => "email",
 					"std" => "info@popteacambodia.com",
 					"type" => "text"
-					);			
+					);	
+
+// Pop Tea Special
+
+$of_options[] = array( "name" => "Poptea Specials",
+					"type" => "heading");
+
+$of_options[] = array( "name" => 'Select Page Specials',
+					"id" => "page_special",
+					"type" => "select",
+					"options" => $of_pages
+					);
+$of_options[] = array( "name" => 'Select Category Taxonomy Specials',
+					"id" => "cat_special",
+					"type" => "select",
+					"options" => $of_cats
+					);
 
 // Pop Tea Menu
 
