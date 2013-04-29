@@ -61,6 +61,7 @@ function sp_widgets_init() {
 	require_once ( SP_BASE_DIR . 'framework/widgets/cp-projects-widget.php' );
 	require_once ( SP_BASE_DIR . 'framework/widgets/contact-widget.php' );
 	require_once ( SP_BASE_DIR . 'framework/widgets/postslist-widget.php' );
+	require_once ( SP_BASE_DIR . 'framework/widgets/cp-newproduct-widget.php' );
 	
 	// Register widgets
 	register_widget( 'sp_text_image_widget' );
@@ -70,7 +71,7 @@ function sp_widgets_init() {
 	register_widget( 'sp_projects_list_widget' );
 	register_widget( 'sp_contact_info_widget' );
 	register_widget( 'sp_post_list_widget' );
-
+    register_widget( 'sp_custom_list_widget' );
 }
 add_action('widgets_init', 'sp_widgets_init');
 

@@ -665,6 +665,52 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             margin-top: 0px;
             margin-bottom: 0px;
         }
+
+        /* Widget Slide */
+
+        .widget-slide{
+            width: 275px;
+            margin-top: 10px;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            z-index: 20;
+        }
+        .widget-slide .items{
+            text-align: center;
+            width: inherit;
+        }
+        .widget-slide h6 a, .widget-slide h6{
+            margin-top: 10px;
+
+        }
+        .widget-slide a{
+            color: #FFF;
+            background: #86a22f;
+            line-height: 36px;
+            padding: 8px 20px;
+            -webkit-border-radius: 6px;
+               -moz-border-radius: 6px;
+                    border-radius: 6px;
+        }
+        .widget-nav {
+            position: absolute;
+            margin-top: -150px;
+            width: 274px;
+            z-index: 50;
+        }
+         
+        .widget-nav a{
+            background: #000;
+            padding: 12px 14px 12px 14px;
+        }
+        .widget-nav a#prev{
+            float: left;
+        }
+        .widget-nav a#next{
+            float: right;
+        }
+
         /* Widget footer*/
         .widget > hr.green, .widget hr.grey{
             display: none;
@@ -687,42 +733,8 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             font-size: 11px;
             margin-bottom: 5px; 
         }
-        /* WIDGET SLIDE*/
-        .widget .widget-slide{
-            overflow: hidden;
-            text-align: center;
-            height: 300px;
-            position: relative;
-            z-index: 20;
-        }
-        .widget-slide a{
-            color: #FFF;
-            background: #86a22f;
-            line-height: 36px;
-            padding: 8px 20px;
-            -webkit-border-radius: 6px;
-               -moz-border-radius: 6px;
-                    border-radius: 6px;
-        }
-        .widget-nav {
-            overflow: hidden;
-            position: absolute;
-            width: 274px;
-            margin-top: -195px;
-            z-index: 50;
-        }
-         
-        .widget-nav a img{
-            background: #000;
-            padding: 12px 14px;
-        }
-        .widget-nav a#prev img{
-            float: left;
-        }
-        .widget-nav a#next img{
-            float: right;
-            margin-top: -54px;
-        }
+        
+        
     /* LIVE VIDEO and LIVE IMAGE */
     .live-image , .live-video{
         padding-bottom: 5px;

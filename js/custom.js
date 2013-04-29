@@ -31,25 +31,9 @@ jQuery(document).ready(function($){
                     speed: 3000,
                     timeout: 6000,
                     slideExpr: '.item-slide',
-                    pagerEvent: 'mouseover',
-                    //before: onBefore,
-                    //after: onAfter,
                     pager: ".slide-nav"
+                    
             });
-       
-		    function onBefore(curr, next, opts, fwd) {
-		       // $(next).find("img").css({'margin-left':'-3500px'});
-		        $(next).find(".slide-content").css({'margin-top':'-900px'});
-		    }
-		    function onAfter(curr, next, opts, fwd) {
-		        //$(this).find("img").css({'display':'block'}).delay(500).stop().animate(
-		                                                                    // {'margin-left':'0px'
-		                                                                    // }, 1200, 'easeInOutElastic');//easeOutQuad
-		        $(this).find(".slide-content").css({'display':'block'}).delay(200).stop().animate(
-		                                                                     {'margin-top':'-410px'
-		                                                                     }, 1000, 'easeInOutElastic');//easeOutQuad
-		    }
-
     
     // ========= WIDGET SLIDES ========= //
     $('.widget-slide').cycle({
@@ -61,10 +45,11 @@ jQuery(document).ready(function($){
                     speed: 1000,
                     timeout: 8000,
                     next: '#next',
-                    prev: '#prev'
+                    prev: '#prev',
+                    width: '275px'
                    
             });
-
+    
     // ========= MENU SLIDES ========= //
     $('.inner-menu').cycle({
                     fx: 'scrollRight', 
