@@ -58,7 +58,6 @@ function sp_widgets_init() {
 	require_once ( SP_BASE_DIR . 'framework/widgets/video-widget.php' );
 	require_once ( SP_BASE_DIR . 'framework/widgets/fb-likebox-widget.php' );
 	require_once ( SP_BASE_DIR . 'framework/widgets/subnav-widget.php' );
-	require_once ( SP_BASE_DIR . 'framework/widgets/cp-projects-widget.php' );
 	require_once ( SP_BASE_DIR . 'framework/widgets/contact-widget.php' );
 	require_once ( SP_BASE_DIR . 'framework/widgets/postslist-widget.php' );
 	require_once ( SP_BASE_DIR . 'framework/widgets/cp-newproduct-widget.php' );
@@ -68,7 +67,6 @@ function sp_widgets_init() {
 	register_widget( 'sp_video_widget' );
 	register_widget( 'sp_fb_likebox_widget' );
 	register_widget( 'sp_subnav_widget' );
-	register_widget( 'sp_projects_list_widget' );
 	register_widget( 'sp_contact_info_widget' );
 	register_widget( 'sp_post_list_widget' );
     register_widget( 'sp_custom_list_widget' );
