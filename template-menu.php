@@ -33,6 +33,7 @@ Template Name: Template Menu
 	 	   	  	    <?php $categories = get_categories($args); 
 	 	   	  	          $i = 1;
 	 	   	  	          $get_cat[] = array();
+                      $get_name_cat[] = array();
 	 	   	  	          foreach($categories as $cat){
 	 	   	  	          	  
                             if($cat->parent == 0 ){
@@ -42,6 +43,7 @@ Template Name: Template Menu
                                     // thing is empty;
                               	}else{
                                     $get_cat[$i-1] = $cat->term_id;//cat_ID
+                                    $get_name_cat[$i-1] = $cat->name;
                               		echo "<li><a href='#menu-option-".$i."'>".$parent."</a></li>";
                               		$i++;
                               	}
@@ -49,46 +51,84 @@ Template Name: Template Menu
 	 	   	  	          }
 	 	   	  	    ?>
 	 	   	  	    </ul>
-
-	 	   	  	    <?php // Store array children of each parent
-                        $option_arr_one = array();
-                        $option_arr_two = array();
-                        foreach ($get_cat as $get_c) {
-                        $child_cat_id =$get_c;
-                        $arg = array('orderby' => 'term_order',
-                                'child_of' => $child_cat_id,
-                                'type'     => 'sp_menu',
-                                'taxonomy' => 'menu-category');
-                        if($child_cat_id == $get_cat[0]){
-                            $child_cats = get_categories($arg);
-                            foreach ($child_cats as $child_cat) {
-                                 array_push($option_arr_one, $child_cat->name);
-                            }// end foreach
-
-                        }// end if
-                        elseif ($child_cat_id == $get_cat[1]) {
-                            $child_cats = get_categories($arg);
-                            foreach ($child_cats as $child_cat) {
-                                 array_push($option_arr_two, $child_cat->name);
-                            }// end foreach
-                            
-                        }// end else if
-
-                        }// end foreach parent
-                    
-                    ?>
 	 	   	  	   
 	 	   	  </div>
-              <!--END MENU OPTIONS TABS-->
+          <!--END MENU OPTIONS TABS-->
+          <div class="choose-options clearfix">
+               <div class="option-item">
+                  <span class="item-left"><h3>Choose your size</h3></span>
+                  <span class="item-right"><h3>Choose your sweetness</h3></span>
+               </div>
+               <div class="option-item">
+                  <span class="item-left item-child-left">500cc</span>
+                  <span class="item-right item-child-right">0% free</span>
+               </div>
+               <div class="option-item">
+                  <span class="item-left item-child-left">700cc</span>
+                  <span class="item-right item-child-right">50% sweet</span>
+               </div>
+               <div class="option-item">
+                  <span class="item-right item-child-right">100% sweet(normal)</span>
+               </div>
+               <div class="option-item">
+                  <span class="item-right item-child-right">150% sweet</span>
+               </div>
+          </div>
+          <!-- end .choose-options -->
+
+          <?php // Store array children of each parent
+                $option_arr_one = array();
+                $option_arr_two = array();
+                foreach ($get_cat as $get_c) {
+                $child_cat_id =$get_c;
+                $arg = array('orderby' => 'term_order',
+                        'child_of' => $child_cat_id,
+                        'type'     => 'sp_menu',
+                        'taxonomy' => 'menu-category');
+                if($child_cat_id == $get_cat[0]){
+                    $child_cats = get_categories($arg);
+                    foreach ($child_cats as $child_cat) {
+                         array_push($option_arr_one, $child_cat->name);
+                    }// end foreach
+
+                }// end if
+                elseif ($child_cat_id == $get_cat[1]) {
+                    $child_cats = get_categories($arg);
+                    foreach ($child_cats as $child_cat) {
+                         array_push($option_arr_two, $child_cat->name);
+                    }// end foreach
+                    
+                }// end else if
+
+                }// end foreach parent
+                    
+              ?>
               <!--START MENU CONTENTS TABS-->
               <div class="tabs-menu-container">
               	<div id="menu-option-1" class="tab-menu-content">
-                	
-                    <div class="top-navigation clearfix">
+                	  <?php $classTopNav = "";
+                          $classTitleSlide = "";
+                        $countMenu1 = count($option_arr_one);
+
+                        if($countMenu1>1){
+                           $classTopNav = "top-navigation";
+                           $classTitleSlide = "title-menu";
+                        }
+                        if($countMenu1 ==1){
+                           $classTopNav = "top-navigation";
+                           $classTitleSlide = "none-title-menu";
+                        }
+                        if($countMenu1 <1){
+                           $classTopNav = "none-top-nav";
+                        }
+
+                  ?>
+                    <div class="<?php echo $classTopNav;?> clearfix">
                          <span><a class="top-prev">
                         	  <img src="<?php bloginfo('template_url');?>/images/previous.png" width="9" height="15"/></a></span>
-                         <span class="title-menu">
+                         <span class="<?php echo $classTitleSlide;?>">
                               <ul class="slider-nav">
+
                                   <?php foreach ($option_arr_one as $option_one) {
                                         echo '<li><a href="#">'.$option_one.'</a></li>';
                                         }?>
@@ -101,13 +141,18 @@ Template Name: Template Menu
                     <!--end .top-navigation .clearfix-->
                   
                   <div class="gallery menu-gallery clearfix">
-                    
+
+                    <?php $menuOption1 = $get_name_cat[0];?>
+
+                    <?php if(count($option_arr_one) >= 1){?>
+
                     <div class="inner-menu ">
                           <?php foreach ($option_arr_one as $option_1) { ?>
-                              <?php $query_post = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$option_1));?>
-                              <?php if($query_post->have_posts()): ?>
+
+                              <?php $query_post1 = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$option_1));?>
+                              <?php if($query_post1->have_posts()): ?>
                               <div class="slides">
-                              <?php while($query_post->have_posts()): $query_post->the_post(); ?>
+                              <?php while($query_post1->have_posts()): $query_post1->the_post(); ?>
                               <div class="view view-fifth">
                                    <?php if(has_post_thumbnail()){
                                          the_post_thumbnail('product-thumb');
@@ -127,9 +172,34 @@ Template Name: Template Menu
                               <?php endif; ?>
                               <?php wp_reset_postdata(); ?>
                               <?php  }//end foreach ?>
+                              
                     </div>
                     <!-- end .inner-menu -->
-                    
+                    <?php }// end if count menu option 1
+                          else{ ?>
+
+                    <?php $query_post1 = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$menuOption1, 'posts_per_page'=> -1));?>
+                    <?php if($query_post1->have_posts()): ?>
+                    <?php while($query_post1->have_posts()): $query_post1->the_post(); ?>
+                    <div class="view view-fifth">
+                         <?php if(has_post_thumbnail()){
+                               the_post_thumbnail('product-thumb');
+                         }?>
+                         <div class="mask">
+                            <h2><?php the_title();?></h2>
+                            <p><span class="price">
+                            <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
+                            echo $meta_price!=''?'$'.$meta_price:'';?>
+                            </span></p>
+                            <a href="<?php the_permalink(); ?>" class="info">View Detail</a>
+                         </div>
+                    </div>
+                    <?php endwhile; ?>
+
+                    <?php endif; ?>
+
+                    <?php } // end else?>
+                    <?php wp_reset_postdata(); ?>
                     <div class="clearfix"></div>
                   </div>
                   <!-- end .gallery .menu-gallery -->
@@ -137,10 +207,26 @@ Template Name: Template Menu
                 <!-- end #menu-option-1 .tab-menu-content -->
                 
                 <div id="menu-option-2" class="tab-menu-content">
-                	<div class="top-navigation clearfix">
+                  <?php $classTopNav = "";
+                        $classTitleSlide = "";
+                        $countMenu2 = count($option_arr_two);
+                        if($countMenu2>1){
+                           $classTopNav = "top-navigation";
+                           $classTitleSlide = "title-menu";
+                        }
+                        if($countMenu2 ==1){
+                           $classTopNav = "top-navigation";
+                           $classTitleSlide = "none-title-menu";
+                        }
+                        if($countMenu2 <1){
+                           $classTopNav = "none-top-nav";
+                        }
+
+                  ?>
+                	<div class="<?php echo $classTopNav;?> clearfix">
                          <span><a class="top-prev">
                         	  <img src="<?php bloginfo('template_url');?>/images/previous.png" width="9" height="15"/></a></span>
-                         <span class="title-menu">
+                         <span class="<?php echo $classTitleSlide;?>">
                               <ul class="slider-nav">
                                   <?php foreach ($option_arr_two as $option_two) {
                                         echo '<li><a href="#">'.$option_two.'</a></li>';
@@ -153,12 +239,16 @@ Template Name: Template Menu
                     </div>
                     <!--end .top-navigation .clearfix-->
                     <div class="gallery menu-gallery clearfix">
-                         <div class="inner-menu">
+                         <?php $menuOption2 = $get_name_cat[1];?>
+                         
+                              <?php if(count($option_arr_two) >= 1){?>
+
+                          <div class="inner-menu">
                               <?php foreach ($option_arr_two as $option_2) { ?>
-                              <?php $query_post = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$option_2));?>
-                              <?php if($query_post->have_posts()): ?>
+                              <?php $query_post2 = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$option_2));?>
+                              <?php if($query_post2->have_posts()): ?>
                               <div class="slides">
-                              <?php while($query_post->have_posts()): $query_post->the_post(); ?>
+                              <?php while($query_post2->have_posts()): $query_post2->the_post(); ?>
                               <div class="view view-fifth">
                                    <?php if(has_post_thumbnail()){
                                          the_post_thumbnail('product-thumb');
@@ -176,11 +266,36 @@ Template Name: Template Menu
                               </div>
                               <!-- end .slides -->
                               <?php endif; ?>
-                              <?php wp_reset_postdata(); ?>
+
                               <?php  }//end foreach ?>
-                             
-                         </div>
-                         <!-- end .inner-menu -->
+                          </div>
+                          <!-- end .inner-menu -->
+                          <?php wp_reset_postdata(); ?>
+
+                              <?php }//if count menu option 
+                                   else{ ?>
+
+                              <?php $query_post2 = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$menuOption2, 'posts_per_page'=> -1));?>
+                              <?php if($query_post2->have_posts()): ?>
+                              <?php while($query_post2->have_posts()): $query_post2->the_post(); ?>
+                              <div class="view view-fifth">
+                                   <?php if(has_post_thumbnail()){
+                                         the_post_thumbnail('product-thumb');
+                                   }?>
+                                   <div class="mask">
+                                      <h2><?php the_title();?></h2>
+                                      <p><span class="price">
+                                      <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
+                                      echo $meta_price!=''?'$'.$meta_price:'';?>
+                                      </span></p>
+                                      <a href="<?php the_permalink(); ?>" class="info">View Detail</a>
+                                   </div>
+                              </div>
+                              <?php endwhile; ?>
+
+                              <?php endif; ?>
+                              <?php }//end else?>
+                              <?php wp_reset_postdata(); ?>
                     
                          <div class="clearfix"></div>
                     </div>

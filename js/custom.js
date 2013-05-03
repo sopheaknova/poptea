@@ -31,9 +31,21 @@ jQuery(document).ready(function($){
                     speed: 3000,
                     timeout: 6000,
                     slideExpr: '.item-slide',
-                    pager: ".slide-nav"
+                    pager: ".slide-nav",
+                    before: onBeforeAct,
+                    after: onAfterAct
                     
             });
+    function onBeforeAct(curr, next, opts, fwd){
+        $(next).find(".slide-content").css({'margin-top':'-900px'});
+
+    }
+    function onAfterAct(curr, next, opts, fwd){
+        $(".slide-content").css({'display':'block'}).delay(200).stop().animate(
+                                                                             {'margin-top':'-410px'
+                                                                             }, 1000, 'easeInOutElastic');//easeOutQuad
+
+    }
     
     // ========= WIDGET SLIDES ========= //
     $('.widget-slide').cycle({
@@ -89,8 +101,7 @@ jQuery(document).ready(function($){
 
         $tabsMenuNav.each(function() {
             var $this = $(this);
-
-            $this.parent().next().children('.tab-menu-content').hide()
+            $this.parent().siblings('.tabs-menu-container').children().hide()
                                                  .first().show()
                                                  .css('background-color','#ffffff');
 
@@ -103,7 +114,7 @@ jQuery(document).ready(function($){
             $this.siblings().removeClass('active').end()
                  .addClass('active');
             
-            $this.parent().parent().next().children('.tab-menu-content').hide()
+            $this.parent().parent().siblings('.tabs-menu-container').children('.tab-menu-content').hide()
                                                           .siblings( $this.find('a').attr('href') ).fadeIn()
                                                           .css('background-color','#ffffff');
 

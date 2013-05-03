@@ -17,7 +17,7 @@
                   <p><?php the_content();?></p>
                   <a class="learn-more" href="<?php echo get_post_meta($post->ID, 'sp_product_url', true);?>">
                   Learn more</a>
-            </div>
+            </div>x
       </div> 
       <!-- end .slide-content -->
   </div>
@@ -34,7 +34,17 @@
 	 	  <div class="gallery clearfix">
            
             <?php $cat_menu = $smof_data['cat_menu'];?>
-            <?php $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu));?>
+            <?php $post_per_page = $smof_data['num-post-popular'];
+
+                  if($post_per_page!="" || $post_per_page!=" "){
+
+                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu,'posts_per_page'=>$post_per_page));
+                  }else{
+
+                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu));
+                  }
+            ?>
+                  
             <?php if($query->have_posts()):?>
 
             <h3><a><?php echo $cat_menu;?></a></h3> 

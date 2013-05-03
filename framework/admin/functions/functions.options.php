@@ -232,6 +232,13 @@ $of_options[] = array( "name" => 'Select Category Taxonomy Specials',
 					"type" => "select",
 					"options" => $of_cats
 					);
+$of_options[] = array( "name" => "Post Per Page",
+					"id" => "num-post-special",
+					"std" => "",
+					"desc" => "Limit number of posts to display out side",
+					"type" => "text"
+					);
+
 
 // Pop Tea Menu
 
@@ -247,6 +254,12 @@ $of_options[] = array( "name" => 'Select Category Taxonomy Popular Drink',
 					"id" => "cat_menu",
 					"type" => "select",
 					"options" => $of_cats
+					);
+$of_options[] = array( "name" => "Post Per Page",
+					"id" => "num-post-popular",
+					"std" => "",
+					"desc" => "Limit number of posts to display out side",
+					"type" => "text"
 					);
 
 

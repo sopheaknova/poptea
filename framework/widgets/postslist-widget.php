@@ -203,13 +203,13 @@ class sp_post_list_widget extends WP_Widget {
 				'orderby'             => $type[0],
 				'order'               => $type[1],
 				'post_status'         => $type[2],
-				'cat'                 => $category,
-				'tax_query'           => array( array(
+				'cat'                 => $category
+				/*'tax_query'           => array( array(
 					'taxonomy' => 'post_format',
 					'field'    => 'slug',
 					'terms'    => array( 'post-format-quote', 'post-format-status' ),
 					'operator' => 'NOT IN',
-					) )
+					) ) */
 			) );
 
 		if ( $posts->have_posts() ) :
@@ -246,13 +246,21 @@ class sp_post_list_widget extends WP_Widget {
 
 				if ( ! isset( $disableThumbnail ) )
 					$out .= '<div class="image-container"><a href="' . get_permalink() . '">' . $image . '</a></div>';
-
+                
+                // image video
+     
+				if( has_post_format( 'video' )) {
+                    
+                    $image_video = '<img src="http://img.youtube.com/vi/'.sp_get_custom_field( 'sp_video_id', $post->ID ).'/0.jpg" width="71" height="66" />';
+				    $out .= '<div class="image-container"><a href="' . get_permalink() . '" rel="bookmark">' . $image_video . '</a></div>';
+				}
+				
                 /* add div cover title, date, excerpt */
-                $get_class = has_post_thumbnail()? 'widget-info': '';
+                $get_class = has_post_thumbnail()||has_post_format( 'video' )? 'widget-info': '';
 
                 $out .= '<div class= '.$get_class.'>';
 				//title
-				if(has_post_thumbnail()){
+				if(has_post_thumbnail() || has_post_format( 'video' )){
 
 			    $out .= '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
                 }else{

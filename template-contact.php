@@ -32,9 +32,9 @@ if(isset($_POST['submitted'])) {
 			$hasError = true;
 		} else {
 			if(function_exists('stripslashes')) {
-				$messages = stripslashes(trim($_POST['comments']));
+				$messages = stripslashes(trim($_POST['message']));
 			} else {
-				$messages = trim($_POST['comments']);
+				$messages = trim($_POST['message']);
 			}
 		}
 			
@@ -91,7 +91,7 @@ if(isset($_POST['submitted'])) {
 		 <div class="container clearfix">
          
         <div class="entry-contact"> 
-    	<h1 class="page-title"><?php echo the_title(); ?></h1>
+    	<h1><?php echo the_title(); ?></h1>
         <div class="one_third">
         <?php if (have_posts()) while ( have_posts() ): the_post(); ?>
 
@@ -110,21 +110,21 @@ if(isset($_POST['submitted'])) {
         <?php } ?>
         <form class="contact-page" action="<?php the_permalink(); ?>" id="contactForm" method="post">
         	<div class="one_half">
-        	<label for="name"><?php _e('Name', 'sptheme'); ?> *</label>
+        	<label for="name"><?php _e('Name', 'sptheme'); ?> <font>*</font></label>
             <input type="text" name="contactname" class="name" value="<?php if(isset($_POST['contactname'])) echo $_POST['contactname'];?>" />
             <?php if($nameError != '') { ?>
                 <span class="error"><?php echo $nameError; ?></span> 
             <?php } ?>
             </div>
             <div class="one_half last">
-            <label for="email"><?php _e('E-mail', 'sptheme'); ?> *</label>
+            <label for="email"><?php _e('E-mail', 'sptheme'); ?> <font>*</font></label>
             <input type="text" name="email" class="email" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" />
             <?php if($emailError != '') { ?>
                 <span class="error"><?php echo $emailError; ?></span>
             <?php } ?>
             </div>
             <div class="clear"></div>
-            <label for="message"><?php _e('Message', 'sptheme'); ?> *</label>
+            <label for="message"><?php _e('Message', 'sptheme'); ?> <font>*</font></label>
             <textarea name="message" cols="81" rows="5" class="message"><?php if(isset($_POST['message'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['message']); } else { echo $_POST['message']; } } ?></textarea>
             <?php if($messageError != '') { ?>
                 <span class="error"><?php echo $messageError; ?></span> 

@@ -46,7 +46,7 @@ class sp_video_widget extends WP_Widget {
 ?>
 
 	<?php if($type == 'Youtube') { ?>
-		<iframe width="300" height="200" src="http://www.youtube.com/embed/<?php echo $id; ?>?rel=0" frameborder="0" allowfullscreen></iframe>
+	<iframe width="300" height="200" src="http://www.youtube.com/embed/<?php echo $id; ?>?rel=0" frameborder="0" allowfullscreen></iframe>
 	<?php } elseif($type == 'Vimeo') { ?>
 	<iframe src="http://player.vimeo.com/video/<?php echo $id; ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ba0d16" width="300" height="200" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 	<?php } elseif($type == 'Dialymotion') { ?>

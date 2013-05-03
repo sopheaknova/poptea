@@ -65,7 +65,8 @@
         </div>
 	</div>
     <!-- end .content-inner -->
-</div><!-- end .container.clearfix -->    
+</div>
+<!-- end .container.clearfix -->    
 
 </section><!-- end #content -->
 <?php get_footer(); ?>

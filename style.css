@@ -444,13 +444,14 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
            -moz-border-radius: 8px;
                 border-radius: 8px;
     }   
-        .menu-content h1, .special-content h1{ 
+        .menu-content h1, .special-content h1, .page-content h1{ 
             font-weight: bolder;
             padding: 20px 20px 0px 20px;
         }
-        .menu-content p, .special-content p{
+        .menu-content p, .special-content p, .page-content p{
             padding: 0px 20px 0px 20px;
         }
+        .page-body h1{ padding-top: 3px;}  /* simple page*/
         .menu-option{ 
             margin: auto;
             width: 460px;
@@ -484,6 +485,40 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             color: #682b7f;
             font-size: 15px;
         }
+        /* Choose Option Item */
+
+        .choose-options{
+            width: 470px;
+            margin: 10px auto;
+            padding-bottom: 10px;
+            border: 2px solid #86a22f;
+            -webkit-border-radius: 7px;
+               -moz-border-radius: 7px;
+                    border-radius: 7px;
+        }
+        .choose-options .option-item{
+            clear: both;
+        }
+        .choose-options .option-item .item-left{
+            float: left; 
+            width: 40%;
+            margin-left: 30px;
+        }
+        .choose-options .option-item .item-right{
+           float: right;
+           width: 50%;
+        }
+        .choose-options .option-item .item-left,.choose-options .option-item .item-right{
+           padding: 5px 0px; 
+        } 
+        .choose-options .option-item .item-child-right{
+            text-indent: 25px;
+            background: url(images/sugar_cube.png) 0px 5px no-repeat;
+        }
+        .choose-options .option-item .item-child-left{
+            text-indent: 20px;
+            background: url(images/capacity-tea.png) 0px 5px no-repeat;
+        }
         /* -----------Top Navigation --------- */
         .top-navigation{
             color: #FFFFFF;
@@ -492,6 +527,9 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             margin:0 auto;
             margin-top:20px;
             margin-bottom: -22px;
+        }
+        .none-top-nav{
+            display: none;
         }
         .top-navigation span{
              display: block;
@@ -508,7 +546,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
         .top-navigation span ul{
            margin-bottom:0;
         }
-        .top-navigation span.title-menu{
+        .top-navigation span.title-menu,.top-navigation span.none-title-menu{
            margin-left: 5px;
            margin-right: 5px;
            margin-top: 0px;
@@ -527,6 +565,10 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             display: inline;
             margin-left:0;
        }
+       .top-navigation span.none-title-menu .slider-nav li a{
+            display: block;
+       }
+       /* style dynamic slider nav */
        .slider-nav li a{
             color: #FFF;
             display: none;
@@ -1287,6 +1329,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
         padding-left: 25px;
     }
     form.contact-page .error{
+        color: red;
         background:none;
         border:none;
         padding:10px 0 0;   
@@ -1801,6 +1844,9 @@ ul.menu-nav>li.current_page_item>a, ul.menu-nav>li.current-menu-item>a, ul.menu-
         float: left;
         margin-left: 19px;
         list-style-type: none;
+    }
+    .footer-bottom-menu ul li.current-menu-item, .footer-bottom-menu ul li.current_page_item{
+        background: none;
     }
     .footer-bottom-menu ul li:first-child{ margin-left: 16px;}
     .footer-bottom-menu ul li a{
