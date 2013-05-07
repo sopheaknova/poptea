@@ -490,7 +490,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
         .choose-options{
             width: 470px;
             margin: 10px auto;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
             border: 2px solid #86a22f;
             -webkit-border-radius: 7px;
                -moz-border-radius: 7px;
@@ -498,6 +498,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
         }
         .choose-options .option-item{
             clear: both;
+            margin-top: 5px;
         }
         .choose-options .option-item .item-left{
             float: left; 
@@ -505,19 +506,27 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             margin-left: 30px;
         }
         .choose-options .option-item .item-right{
-           float: right;
-           width: 50%;
+            float: right;
+            width: 50%;
         }
-        .choose-options .option-item .item-left,.choose-options .option-item .item-right{
-           padding: 5px 0px; 
-        } 
-        .choose-options .option-item .item-child-right{
-            text-indent: 25px;
-            background: url(images/sugar_cube.png) 0px 5px no-repeat;
+        .option-item .item-left ul li{
+            width: 145px;
         }
-        .choose-options .option-item .item-child-left{
-            text-indent: 20px;
-            background: url(images/capacity-tea.png) 0px 5px no-repeat;
+        .option-item .item-right ul li{
+            width: 200px;
+        }
+        .option-item .item-left ul li, .option-item .item-right ul li{
+            list-style-type: none;
+            margin-left: 0px;
+            padding: 5px 0px;
+            border-bottom: 1px dotted #86A22F;
+        }
+        .option-item .item-left ul li:last-child, .option-item .item-right ul li:last-child{
+            border-bottom: none;
+        }
+        .option-item .item-left ul li img, .option-item .item-right ul li img{
+            margin-right: 10px;
+            float: left;
         }
         /* -----------Top Navigation --------- */
         .top-navigation{
@@ -781,6 +790,10 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
     .live-image , .live-video{
         padding-bottom: 5px;
     }
+    .live-image img{
+        border: 1px solid #CCC;
+       
+    }
 
     /* -------------- LIVE COMMENT ------------- */
     .live-comment{
@@ -827,7 +840,61 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
         .live-comment ul#quote li, .live-comment ul#aside li{
             clear: left;
         }
-    
+    /* ---------------------------------------------------------------------- */
+    /*  Main in Single 
+    /* ---------------------------------------------------------------------- */
+    .description-pic, .special-single{
+        float: right;
+        border: 10px solid #fff;
+        text-align: center;
+        margin-left: 20px;
+        background: #FFF;
+        -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+        -moz-box-shadow: 1px 1px 2px #e6e6e6;
+        box-shadow: 1px 1px 2px #e6e6e6;
+    }
+    .description-pic img{
+        margin: 5px 25px 5px 25px;
+    }
+    .prodcut-price{
+        color: #86A22F;
+        font-size: 15px;
+        margin-bottom: 5px; 
+        font-weight: bolder;
+    }
+    .prodcut-price:hover{
+        color: #682B7F;
+    }
+    /* SLIDE SINGLE */
+    .single-slide{
+        margin: 2px 5px 5px 5px;
+    }
+    .single-slide img{
+        padding: 10px 35px 10px 35px;
+        text-align: center;
+    }
+    .single-nav{
+        margin-top: -90px;
+        width: 230px;
+        position: absolute;
+        clear: both;
+        z-index: 100;
+    }
+    .single-nav #nav-prev{
+        float: left;
+    }
+    .single-nav #nav-next{
+        float: right;
+    }
+    .single-nav a{
+        height: 30px;
+        background: #000000;
+        line-height: 30px;
+    }
+    .single-nav a img{
+        margin-bottom: 0px;
+        padding: 0px 8px;
+    }
     /* ---------------------------------------------------------------------- */
     /*  Menu Gallery
     /* ---------------------------------------------------------------------- */

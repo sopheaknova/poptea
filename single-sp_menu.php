@@ -20,16 +20,52 @@
                 
                 <div class="entry-meta">
                 
-                <?php echo sp_custom_meta(); ?>
+                <?php //echo sp_custom_meta(); ?>
 
                 </div><!-- end .entry-meta -->
+                
+                
+                 <?php $cat_special = $smof_data['cat_special'];  // SPECIALS Drink?>   
+                 <?php $format = has_post_format('gallery',$post->ID); 
+                        
+                    if ($format && !taxonomy_exists($cat_special)){ ?>
 
-                <?php if(has_post_thumbnail()){
-                the_post_thumbnail('product-thumb');
-			    }?>
+                    <div class='special-single clearfix'>
+                    <div class='single-slide'>
+                    <?php $attachments = get_children( array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'post_mime_type' => 'image') );
+                    foreach ( $attachments as $attachment_id => $attachment ) {
+						echo wp_get_attachment_image($attachment_id);
+					}?>
+                    </div>
+                    <!-- end .single-single -->
+                    <div class="single-nav">
+                    	 <a id="nav-prev"><img src="<?php bloginfo('template_url');?>/images/previous-white.png"/></a>
+                    	 <a id="nav-next"><img src="<?php bloginfo('template_url');?>/images/next-white.png" /></a>
+                    </div>
+                    <div class="prodcut-price">
+	                <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
+	                                      echo $meta_price!=''?'Price : $'.$meta_price:'';?>
+	                </div>
+                    </div>
+                    <!-- end .special-single -->
+                 <?php }else{ ?>
 
-                <p><?php echo sp_post_content(); ?><p>
+                    <?php if(has_post_thumbnail()){ ?>
+	                <div class="description-pic">
+	                <?php the_post_thumbnail('product-thumb'); ?>
+	                
+	                <div class="prodcut-price">
+	                <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
+	                                      echo $meta_price!=''?'Price : $'.$meta_price:'';?>
+	                </div>
+	                </div>
+				    <?php }?>
+                   	    
+                 <?php } //else?> 
+              
 
+                <?php echo sp_post_content(); ?>
+                
 				</article><!-- end .hentry -->
 
 			<?php endwhile; ?>

@@ -352,7 +352,8 @@ jQuery(document).ready(function($){
 			opacity: 0.6
 		});	
 	});
-	
+
+	// Sidebar
 	$(".sidebar_add_button").live('click', function(){		
 		var slidesContainer = $(this).prev();
 		var sliderId = slidesContainer.attr('id');
@@ -370,6 +371,34 @@ jQuery(document).ready(function($){
 		var newNum = maxNum + 1;
 		
 		var newSlide = '<li class="temphide"><div class="slide_header"><strong>Sidebar ' + newNum + '</strong><input type="hidden" class="slide of-input order" name="' + sliderId + '[' + newNum + '][order]" id="' + sliderId + '_slide_order-' + newNum + '" value="' + newNum + '"><a class="slide_edit_button" href="#">Edit</a></div><div class="slide_body" style="display: none; "><label>Title</label><input class="slide of-input of-slider-title" name="' + sliderId + '[' + newNum + '][title]" id="' + sliderId + '_' + newNum + '_slide_title" value="Sidebar' + newNum + '"><a class="slide_delete_button" href="#">Delete</a><div class="clear"></div></div></li>';
+		
+		slidesContainer.append(newSlide);
+		$('.temphide').fadeIn('fast', function() {
+			$(this).removeClass('temphide');
+		});
+				
+		//of_image_upload(); // re-initialise upload image..
+		
+		return false; //prevent jumps, as always..
+	});	
+    // Addoption
+    $(".addoption_add_button").live('click', function(){		
+		var slidesContainer = $(this).prev();
+		var sliderId = slidesContainer.attr('id');
+		var sliderInt = $('#'+sliderId).attr('rel');
+		
+		var numArr = $('#'+sliderId +' li').find('.order').map(function() { 
+			var str = this.id; 
+			str = str.replace(/\D/g,'');
+			str = parseFloat(str);
+			return str;			
+		}).get();
+		
+		var maxNum = Math.max.apply(Math, numArr);
+		if (maxNum < 1 ) { maxNum = 0};
+		var newNum = maxNum + 1;
+		
+		var newSlide = '<li class="temphide"><div class="slide_header"><strong>Addoption ' + newNum + '</strong><input type="hidden" class="slide of-input order" name="' + sliderId + '[' + newNum + '][order]" id="' + sliderId + '_slide_order-' + newNum + '" value="' + newNum + '"><a class="slide_edit_button" href="#">Edit</a></div><div class="slide_body" style="display: none; "><label>Level</label><input class="slide of-input of-slider-title" name="' + sliderId + '[' + newNum + '][title]" id="' + sliderId + '_' + newNum + '_slide_title" value="Addoption' + newNum + '"><a class="slide_delete_button" href="#">Delete</a><div class="clear"></div></div></li>';
 		
 		slidesContainer.append(newSlide);
 		$('.temphide').fadeIn('fast', function() {

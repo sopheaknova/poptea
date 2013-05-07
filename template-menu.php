@@ -54,26 +54,40 @@ Template Name: Template Menu
 	 	   	  	   
 	 	   	  </div>
           <!--END MENU OPTIONS TABS-->
+          
           <div class="choose-options clearfix">
-               <div class="option-item">
-                  <span class="item-left"><h3>Choose your size</h3></span>
-                  <span class="item-right"><h3>Choose your sweetness</h3></span>
+               <?php $titleSize = trim($smof_data['txt_title_size']); ?>
+               <?php $titleSweet = trim($smof_data['txt_title_sweet']); ?>
+               <div class="option-item option-head">
+                  <span class="item-left"><h3><?php echo $titleSize!==''?$titleSize:'Choose your size';?></h3></span>
+                  <span class="item-right"><h3><?php echo $titleSweet!==''?$titleSweet:'Choose your sweetness';?></h3></span>
                </div>
+               <?php $sizeOpt = $smof_data['icon_size']; ?>
+               <?php $levelSize = $smof_data['addoption_size']; ?>
+               <?php $sweetOpt = $smof_data['icon_sweet']; ?>
+               <?php $levelSweet = $smof_data['addoption_sweet']; ?>
                <div class="option-item">
-                  <span class="item-left item-child-left">500cc</span>
-                  <span class="item-right item-child-right">0% free</span>
-               </div>
-               <div class="option-item">
-                  <span class="item-left item-child-left">700cc</span>
-                  <span class="item-right item-child-right">50% sweet</span>
-               </div>
-               <div class="option-item">
-                  <span class="item-right item-child-right">100% sweet(normal)</span>
-               </div>
-               <div class="option-item">
-                  <span class="item-right item-child-right">150% sweet</span>
+                  <span class="item-left">
+                      <ul>
+                          <?php if($sizeOpt!=='' && count($levelSize)>=1){
+                                foreach( $levelSize as $value ){
+                                echo "<li><img src='".$sizeOpt."'>".$value['title']."</li>";
+                                }
+                          }?>
+                      </ul>
+                  </span>
+                  <span class="item-right">
+                      <ul>
+                          <?php if($sweetOpt!=='' && count($levelSweet)>=1){
+                                foreach( $levelSweet as $value ){
+                                echo "<li><img src='".$sweetOpt."'>".$value['title']."</li>";
+                                }
+                          }?>
+                      </ul>
+                  </span>
                </div>
           </div>
+          
           <!-- end .choose-options -->
 
           <?php // Store array children of each parent

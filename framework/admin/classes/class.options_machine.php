@@ -378,7 +378,7 @@ class Options_Machine {
 					$output .= '<a href="#" class="button slide_add_button">Add New Slide</a></div>';
 					
 				break;
-				
+				// sidebar
 				case 'sidebar':
 					$_id = strip_tags( strtolower($value['id']) );
 					$int = '';
@@ -399,7 +399,30 @@ class Options_Machine {
 					$output .= '</ul>';
 					$output .= '<a href="#" class="button sidebar_add_button">Add New Sidebar</a></div>';
 				break;
-				
+
+				// addoption
+
+				case 'addoption':
+					$_id = strip_tags( strtolower($value['id']) );
+					$int = '';
+					$int = optionsframework_mlu_get_silentpost( $_id );
+					$output .= '<div class="slider"><ul id="'.$value['id'].'" rel="'.$int.'">';
+					$slides = $data[$value['id']];
+					$count = count($slides);
+					if ($count >= 1 && !empty($slides)) {
+						$i = 0;
+						foreach ($slides as $slide) {
+							$oldorder = $slide['order'];
+							$i++;
+							$order = $i;
+							$output .= Options_Machine::optionsframework_addoption_function($value['id'],$value['std'],$oldorder,$order,$int);
+						}
+					}
+							
+					$output .= '</ul>';
+					$output .= '<a href="#" class="button addoption_add_button">Add New Option</a></div>';
+				break;
+
 				//drag & drop block manager
 				case 'sorter':
 				
@@ -823,6 +846,54 @@ class Options_Machine {
 		$sidebar .= '</li>';
 	
 	return $sidebar;
+	}
+	/*-----------------------------------------------------------------------------------*/
+	/* Aquagraphite Addoption - optionsframework_addoption_function */
+	/*-----------------------------------------------------------------------------------*/
+	public static function optionsframework_addoption_function($id,$std,$oldorder,$order,$int){
+	
+		$data = get_option(OPTIONS);
+		
+		$addoption = '';
+		$slide = array();
+		$slide = $data[$id];
+		
+		if (isset($slide[$oldorder])) { $val = $slide[$oldorder]; } else {$val = $std;}
+		
+		//initialize all vars
+		$slidevars = array('title','url','link','description');
+		
+		foreach ($slidevars as $slidevar) {
+			if (!isset($val[$slidevar])) {
+				$val[$slidevar] = '';
+			}
+		}
+		
+		//begin slider interface	
+		if (!empty($val['title'])) {
+			$addoption .= '<li><div class="slide_header"><strong>'.stripslashes($val['title']).'</strong>';
+			$first_addoption_name = stripslashes($val['title']);
+		} else {
+			$addoption .= '<li><div class="slide_header"><strong>Addoption '.$order.'</strong>';
+			$first_addoption_name = 'Addoption' .$order;
+		}
+		
+		$addoption .= '<input type="hidden" class="slide of-input order" name="'. $id .'['.$order.'][order]" id="'. $id.'_'.$order .'_slide_order" value="'.$order.'" />';
+	
+		$addoption .= '<a class="slide_edit_button" href="#">Edit</a></div>';
+		
+		$addoption .= '<div class="slide_body">';
+		
+		$addoption .= '<label>Level</label>';
+		$addoption .= '<input class="slide of-input of-slider-title" name="'. $id .'['.$order.'][title]" id="'. $id .'_'.$order .'_slide_title" value="'. $first_addoption_name . '" />';
+	
+		$addoption .= '<a class="slide_delete_button" href="#">Delete</a>';
+		$addoption .= '<div class="clear"></div>' . "\n";
+	
+		$addoption .= '</div>';
+		$addoption .= '</li>';
+	
+	return $addoption;
 	}
 	
 }//end Options Machine class

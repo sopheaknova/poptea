@@ -61,6 +61,18 @@ jQuery(document).ready(function($){
                     width: '275px'
                    
             });
+    // ========= SINGLE SLIDES ========= //
+    $('.single-slide').cycle({
+                    fx: 'scrollRight', 
+                    cleartype:  false,
+                    pause:    1,  // pause on hover
+                    easing: 'easeInOutBack',
+                    randomizeEffects: 0,
+                    speed: 1000,
+                    timeout: 8000,
+                    next: '#nav-next',
+                    prev: '#nav-prev',
+            });
     
     // ========= MENU SLIDES ========= //
     $('.inner-menu').cycle({

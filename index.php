@@ -17,7 +17,7 @@
                   <p><?php the_content();?></p>
                   <a class="learn-more" href="<?php echo get_post_meta($post->ID, 'sp_product_url', true);?>">
                   Learn more</a>
-            </div>x
+            </div>
       </div> 
       <!-- end .slide-content -->
   </div>

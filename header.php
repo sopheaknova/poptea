@@ -39,6 +39,7 @@
                 <?php else: ?>
                 <h1><?php bloginfo('name'); ?></h1>
                 <?php endif; ?>
+                
             </a>
             </div>
             <div class="content-top clearfix">

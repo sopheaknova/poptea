@@ -262,6 +262,49 @@ $of_options[] = array( "name" => "Post Per Page",
 					"type" => "text"
 					);
 
+// Choose Size and Sweetness
+
+$of_options[] = array( "name" => "Size and Sweet Settings",
+					   "type" => "heading");
+
+$of_options[] = array( "name" => "Input text for Title Size",
+					"id" => "txt_title_size",
+					"std" => "",
+					"desc" => "(Optional): If you don't input. Default: Choose your size",
+					"type" => "text"
+					);
+$of_options[] = array( 	"name" 		=> "Icon Size or Capacity",
+						"desc" 		=> "Upload a 16px x 16px Png/Gif image that represent Size.",
+						"id" 		=> "icon_size",
+						"std" => SP_BASE_URL . "images/capacity-tea.png",
+						"mod" => "min",
+						"type" 		=> "upload"
+				);
+$of_options[] = array( "name" => "Choose Your Size Options",
+					"desc" => "Capacity of Poptea e.g: 500cc or 700cc..",
+					"id" => "addoption_size",
+					"std" => "",
+					"type" => "addoption");
+
+
+$of_options[] = array( "name" => "Input text for Title Sweetness",
+					"id" => "txt_title_sweet",
+					"std" => "",
+					"desc" => "(Optional): If you don't input. Default: Choose your sweetness",
+					"type" => "text"
+					);
+$of_options[] = array( 	"name" 		=> "Icon Sweetness",
+						"desc" 		=> "Upload a 16px x 16px Png/Gif image that represent Sweetness.",
+						"id" 		=> "icon_sweet",
+						"std" => SP_BASE_URL . "images/sugar_cube.png",
+						"mod" => "min",
+						"type" 		=> "upload"
+				); 
+$of_options[] = array( "name" => "Choose Your Sweetness Options",
+					"desc" => "Sweetness of Poptea e.g: 0% free , 50% sweet, 100% sweet(normal), 150% sweet.",
+					"id" => "addoption_sweet",
+					"std" => "",
+					"type" => "addoption");
 
 //Sidebar Settings
 
