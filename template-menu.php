@@ -19,7 +19,9 @@ Template Name: Template Menu
 	 	   	  	    <h3>Please choose menu options</h3>
 	 	   	  	    <?php
 	 	   	  	    $cat_menu = $smof_data['cat_menu'];  // POPULAR Drink
-                $cat_special = $smof_data['cat_special'];  // SPECIALS Drink  
+                $cat_special = $smof_data
+
+                ['cat_special'];  // SPECIALS Drink  
 	 	   	  	    //echo $cat_menu;
 	 	   	  	    $args = array(
 							'type'                     => 'sp_menu',

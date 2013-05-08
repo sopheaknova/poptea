@@ -217,6 +217,29 @@ $of_options[] = array( "name" => "Email",
 					"type" => "text"
 					);	
 
+// Our Top 12
+
+$of_options[] = array( "name" => "Our Top 12",
+					"type" => "heading");
+
+$of_options[] = array( "name" => 'Select Category that you want to show as TOP 12',
+					"id" => "cat_top_12",
+					"type" => "select",
+					"options" => $of_cats
+					);
+$of_options[] = array( "name" => "Put the title of Our Top 12",
+					"id" => "title_top_12",
+					"std" => "",
+					"desc" => "",
+					"type" => "text"
+					);
+$of_options[] = array( "name" => "Post Per Page",
+					"id" => "num-post-top-12",
+					"std" => "",
+					"desc" => "Limit number of posts to display Our Top 12",
+					"type" => "text"
+					);
+
 // Pop Tea Special
 
 $of_options[] = array( "name" => "Poptea Specials",

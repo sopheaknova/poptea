@@ -33,21 +33,23 @@
 	 <div class="container">
 	 	  <div class="gallery clearfix">
            
-            <?php $cat_menu = $smof_data['cat_menu'];?>
-            <?php $post_per_page = $smof_data['num-post-popular'];
+            <?php $cat_top_12 = $smof_data['cat_top_12'];?>
+            <?php $title_top_12 = (string)$smof_data['title_top_12'];?>
+            <?php $post_per_page = $smof_data['num-post-top-12'];
 
                   if($post_per_page!="" || $post_per_page!=" "){
 
-                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu,'posts_per_page'=>$post_per_page));
+                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_top_12,'posts_per_page'=>$post_per_page));
                   }else{
 
-                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu));
+                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_top_12));
                   }
             ?>
                   
             <?php if($query->have_posts()):?>
-
-            <h3><a><?php echo $cat_menu;?></a></h3> 
+            <?php if($title_top_12!=="" or $title_top_12!==" "){?>
+                  <?php echo "<h3><a>".$title_top_12."</a></h3>";?> 
+            <?php }?>
             <section class="gallery-hover clearfix">
             <?php while($query->have_posts()): $query->the_post();?>
             
