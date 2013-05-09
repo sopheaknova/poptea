@@ -7,7 +7,7 @@
  * @since       1.4.0
  * @author      Syamil MJ
  */
- 
+
  
 /**
  * Admin Init
@@ -23,6 +23,7 @@ function optionsframework_admin_init()
 	global $of_options, $options_machine;
 	$options_machine = new Options_Machine($of_options);
 }
+
 
 /**
  * Create Options page

@@ -21,31 +21,7 @@ jQuery(document).ready(function($){
 		   });
 		});	
 	});
-	// ========= Feature slideshow ========= //
-	$('.featured-slideshow').cycle({
-                    fx: 'scrollRight', 
-                    cleartype:  false,
-                    pause:    1,  // pause on hover
-                    easing: 'easeInOutBack', //easeOutBounce
-                    randomizeEffects: 0,
-                    speed: 1500,
-                    timeout: 6000,
-                    slideExpr: '.item-slide',
-                    pager: ".slide-nav"
-                    /*before: onBeforeAct,
-                    after: onAfterAct*/
-                    
-            });
-    function onBeforeAct(curr, next, opts, fwd){
-        $(next).find(".slide-content").css({'margin-top':'-900px'});
-
-    }
-    function onAfterAct(curr, next, opts, fwd){
-        $(".slide-content").css({'display':'block'}).delay(200).stop().animate(
-                                                                             {'margin-top':'-410px'
-                                                                             }, 1000, 'easeInOutElastic');//easeOutQuad
-
-    }
+	
     
     // ========= WIDGET SLIDES ========= //
     $('.widget-slide').cycle({
