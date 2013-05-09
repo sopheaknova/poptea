@@ -4,28 +4,32 @@
 <?php $cp_query = new WP_Query(array('post_type'=>'sp_slide','posts_per_page'=>4)); ?>
   
 <?php if($cp_query->have_posts()) : ?>
-<div class="featured">
-<?php while($cp_query->have_posts()): $cp_query->the_post(); ?>
-  <div class="item-slide">
-      <?php if (has_post_thumbnail()) {
-      the_post_thumbnail();
-      }?>
-      <div class="slide-content">
-            <div class="slide-cont-info">
-                  <a class="new-promotion" href="#"><?php echo get_post_meta($post->ID, 'sp_product_promotion', true); ?></a>
-                  <h1><?php the_title();?></h1>
-                  <p><?php the_content();?></p>
-                  <a class="learn-more" href="<?php echo get_post_meta($post->ID, 'sp_product_url', true);?>">
-                  Learn more</a>
-            </div>
-      </div> 
-      <!-- end .slide-content -->
-  </div>
-<!-- end .item-slide -->
-<?php endwhile; ?>
-</div>
-<div class="slide-nav"></div>
-<!-- end .featured -->
+<div id="featured-container">
+    <div class="featured-slideshow container">
+    <?php while($cp_query->have_posts()): $cp_query->the_post(); ?>
+      <div class="item-slide">
+          <?php if (has_post_thumbnail()) {
+          the_post_thumbnail();
+          }?>
+          <!--<div class="slide-content">
+                <div class="slide-cont-info">
+                      <a class="new-promotion" href="#"><?php echo get_post_meta($post->ID, 'sp_product_promotion', true); ?></a>
+                      <h1><?php the_title();?></h1>
+                      <p><?php the_content();?></p>
+                      <a class="learn-more" href="<?php echo get_post_meta($post->ID, 'sp_product_url', true);?>">
+                      Learn more</a>
+                </div>
+          </div> -->
+          <!-- end .slide-content -->
+      </div>
+    <!-- end .item-slide -->
+    <?php endwhile; ?>
+    
+    <div class="slide-nav"></div>
+    
+    </div> <!-- end .featured-slideshow .container -->
+</div> <!-- end #featured-container -->
+
 <?php else:?>
 <h1>No any slides has created.</h1>
 <?php endif; ?>
@@ -33,23 +37,29 @@
 	 <div class="container">
 	 	  <div class="gallery clearfix">
            
-            <?php $cat_top_12 = $smof_data['cat_top_12'];?>
-            <?php $title_top_12 = (string)$smof_data['title_top_12'];?>
-            <?php $post_per_page = $smof_data['num-post-top-12'];
+           <?php
+		   //view full menu link 
+		   $menu_page = $smof_data['page_menu'];
+		   $menu_slug = get_page_by_path($menu_page); // get page by slug name
+           $menu_url = get_page_link($menu_slug->ID); // id
+		   
+		   $special_page = $smof_data['page_special'];
+		   $special_slug = get_page_by_path($special_page); // get page by slug name
+           $special_url = get_page_link($special_slug->ID); // id
+		   ?>
+                      
+            <?php 
+			$cat_top_12 = $smof_data['cat_special'];
+            $title_top_12 = (string)$smof_data['title_top_12'];
+            $post_per_page = $smof_data['num-post-top-12'];
 
-                  if($post_per_page!="" || $post_per_page!=" "){
-
-                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_top_12,'posts_per_page'=>$post_per_page));
-                  }else{
-
-                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_top_12));
-                  }
+            $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_top_12,'posts_per_page'=>$post_per_page));
             ?>
                   
             <?php if($query->have_posts()):?>
-            <?php if($title_top_12!=="" or $title_top_12!==" "){?>
-                  <?php echo "<h3><a>".$title_top_12."</a></h3>";?> 
-            <?php }?>
+            
+			<?php echo '<h3><a href="' . $special_url . '">' .$title_top_12. '</a></h3>';?> 
+            
             <section class="gallery-hover clearfix">
             <?php while($query->have_posts()): $query->the_post();?>
             
@@ -72,9 +82,6 @@
             <!-- END Gallery Hover Effects -->
             <div class="clearfix"></div>
             <div class="view-full-menu">
-               <?php $menu_page = $smof_data['page_menu'];?>
-                      <?php $menu_slug = get_page_by_path($menu_page); // get page by slug name?>
-                      <?php $menu_url = get_page_link($menu_slug->ID); // id?>
                <h6><a href="<?php echo $menu_url;?>">VIEW FULL MENU</a></h6>
             </div>
             <?php endif;?>

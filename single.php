@@ -40,22 +40,7 @@
 				</article><!-- end .hentry -->
 
 			<?php endwhile; ?>
-
-			<?php // Pagination
-				if(function_exists('wp_pagenavi'))
-					wp_pagenavi();
-				else 
-					echo sp_pagination(); 
-			?>
-			
-		<?php else: ?>
 		
-			<article id="post-0" class="post no-results not-found">
-		
-				<h3><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for...', 'sptheme' ); ?></h3>
-
-			</article><!-- end .hentry -->
-
 		<?php endif; ?>
 
         </div>

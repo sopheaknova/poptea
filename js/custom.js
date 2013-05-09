@@ -22,18 +22,18 @@ jQuery(document).ready(function($){
 		});	
 	});
 	// ========= Feature slideshow ========= //
-	$('.featured').cycle({
+	$('.featured-slideshow').cycle({
                     fx: 'scrollRight', 
                     cleartype:  false,
                     pause:    1,  // pause on hover
                     easing: 'easeInOutBack', //easeOutBounce
                     randomizeEffects: 0,
-                    speed: 3000,
+                    speed: 1500,
                     timeout: 6000,
                     slideExpr: '.item-slide',
-                    pager: ".slide-nav",
-                    before: onBeforeAct,
-                    after: onAfterAct
+                    pager: ".slide-nav"
+                    /*before: onBeforeAct,
+                    after: onAfterAct*/
                     
             });
     function onBeforeAct(curr, next, opts, fwd){

@@ -15,16 +15,11 @@ Template Name: Template Special
               <?php endif;?>
         </div>
         <div class="gallery clearfix">
-            <?php $cat_menu = $smof_data['cat_special'];?>
-            <?php $post_per_page = $smof_data['num-post-special'];
-                  if($post_per_page!=""||$post_per_page!=" "){
-                  
-                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu,'posts_per_page'=>$post_per_page));
-                  }else{
-                  
-                  $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu));
-                  }
-                  ?>
+            <?php 
+			$cat_menu = $smof_data['cat_special'];
+            
+			$query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_menu,'posts_per_page'=> -1));
+            ?>
             <?php if($query->have_posts()):?>
 
             <section class="gallery-hover clearfix">

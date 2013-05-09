@@ -44,9 +44,9 @@ require_once( SP_BASE_DIR . 'framework/custom-posts/custom-posts.php' );
 require_once( SP_BASE_DIR . 'framework/admin/index.php' );
 
 //Add Shortcodes
-require_once( SP_BASE_DIR . 'framework/shortcodes/shortcodes.php' );
+/*require_once( SP_BASE_DIR . 'framework/shortcodes/shortcodes.php' );
 if ( is_admin() && current_user_can( 'edit_posts' ) )
-		require_once( SP_BASE_DIR . 'framework/shortcodes/shortcodes-generator.php' );
+		require_once( SP_BASE_DIR . 'framework/shortcodes/shortcodes-generator.php' );*/
 
 // Add metaboxes
 require_once( SP_BASE_DIR . 'framework/meta-box/class.php' );

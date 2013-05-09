@@ -46,7 +46,7 @@
 
 			$role     = 'post'; // page
 			$slug     = 'slide';
-			$supports = array( 'title', 'editor', 'thumbnail' );
+			$supports = array( 'title', 'thumbnail' );
 			//'title', 'editor', 'excerpt', 'thumbnail', 'comments', 'custom-fields'
 
 			/*if ( $smof_data['sp_slide_revisions'] )

@@ -17,12 +17,10 @@ Template Name: Template Menu
               <!--START MENU OPTIONS TABS-->
 	 	   	  <div class="menu-option">
 	 	   	  	    <h3>Please choose menu options</h3>
-	 	   	  	    <?php
-	 	   	  	    $cat_menu = $smof_data['cat_menu'];  // POPULAR Drink
-                $cat_special = $smof_data
-
-                ['cat_special'];  // SPECIALS Drink  
-	 	   	  	    //echo $cat_menu;
+                    <?php
+	 	   	  	    $cat_menu_opt_1 = $smof_data['cat_menu_opt_1']; 
+                	$cat_menu_opt_2 = $smof_data['cat_menu_opt_2'];
+	 	   	  	    
 	 	   	  	    $args = array(
 							'type'                     => 'sp_menu',
 							//'child_of'                 => 0,
@@ -30,30 +28,31 @@ Template Name: Template Menu
 							'orderby'                  => 'name',
 							'order'                    => 'ASC',
 							'taxonomy'                 => 'menu-category');
+	 	   	  	    
+					$categories = get_categories($args); 
 	 	   	  	    ?>
-	 	   	  	    <ul class="tabs-menu">
-	 	   	  	    <?php $categories = get_categories($args); 
-	 	   	  	          $i = 1;
-	 	   	  	          $get_cat[] = array();
-                      $get_name_cat[] = array();
-	 	   	  	          foreach($categories as $cat){
-	 	   	  	          	  
-                            if($cat->parent == 0 ){
-                              	$parent = $cat->name;
-                              	if($parent==$cat_menu || $parent==$cat_special) // take Category POPULAR Drink out
-                              	{
-                                    // thing is empty;
-                              	}else{
-                                    $get_cat[$i-1] = $cat->term_id;//cat_ID
-                                    $get_name_cat[$i-1] = $cat->name;
-                              		echo "<li><a href='#menu-option-".$i."'>".$parent."</a></li>";
-                              		$i++;
-                              	}
-                            }// end if parent
-	 	   	  	          }
+                    
+					<ul class="tabs-menu">
+					<?php
+					$i = 1;
+	 	   	  	    $get_cat[] = array();
+                    $get_name_cat[] = array();
+					
+					foreach($categories as $cat){
+					  
+						if($cat->parent == 0 ){
+							$parent = $cat->name;
+							if( $parent == $cat_menu_opt_1 || $parent == $cat_menu_opt_2 ) // take Category POPULAR Drink out
+							{
+								$get_cat[$i-1] = $cat->term_id;//cat_ID
+								$get_name_cat[$i-1] = $cat->name;
+								echo "<li><a href='#menu-option-".$i."'>".$parent."</a></li>";
+								$i++;
+							}
+						}// end if parent
+					}
 	 	   	  	    ?>
-	 	   	  	    </ul>
-	 	   	  	   
+	 	   	  	   	</ul>
 	 	   	  </div>
           <!--END MENU OPTIONS TABS-->
           
