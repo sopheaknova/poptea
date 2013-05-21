@@ -43,8 +43,10 @@
                     	 <a id="nav-next"><img src="<?php bloginfo('template_url');?>/images/next-white.png" /></a>
                     </div>
                     <div class="prodcut-price">
-	                <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
-	                                      echo $meta_price!=''?'Price : $'.$meta_price:'';?>
+	                <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
+	                                      echo $meta_price1!=''?'Medium : $'.$meta_price1:'';?>&nbsp;&nbsp;
+	                <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
+	                                      echo $meta_price2!=''?'Large : $'.$meta_price2:'';?>
 	                </div>
                     </div>
                     <!-- end .special-single -->
@@ -55,8 +57,10 @@
 	                <?php the_post_thumbnail('product-thumb'); ?>
 	                
 	                <div class="prodcut-price">
-	                <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
-	                                      echo $meta_price!=''?'Price : $'.$meta_price:'';?>
+	                <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
+	                                      echo $meta_price1!=''?'Medium : $'.$meta_price1:'';?>
+	                <?php $meta_price2 = get_post_meta($post->ID, 'sp_medium_price', true); 
+	                                      echo $meta_price2!=''?'Large : $'.$meta_price2:'';?>
 	                </div>
 	                </div>
 				    <?php }?>

@@ -68,8 +68,15 @@ $meta_boxes[] = array(
 	'priority' => 'high',
 	'fields'   => array(
 		array(
-			'name' => __('Enter the price of products. ', 'sptheme_admin'),
-			'id'   => $prefix . 'product_price',
+			'name' => __('Enter the medium price of products. ', 'sptheme_admin'),
+			'id'   => $prefix . 'medium_price',
+			'type' => 'text',
+			'std'  => '',
+			'desc' => 'e.g: 9.00. do not put currency'
+		),
+		array(
+			'name' => __('Enter the large price of products. ', 'sptheme_admin'),
+			'id'   => $prefix . 'large_price',
 			'type' => 'text',
 			'std'  => '',
 			'desc' => 'e.g: 9.00. do not put currency'

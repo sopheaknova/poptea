@@ -175,8 +175,10 @@ Template Name: Template Menu
                                    <div class="mask">
                                       <h2><?php the_title();?></h2>
                                       <p><span class="price">
-                                      <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
-                                      echo $meta_price!=''?'$'.$meta_price:'';?>
+                                      <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
+                                      echo $meta_price1!=''?'Medium '.$meta_price1.' $':'';?>
+                                      <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
+                                      echo $meta_price2!=''?'Large '.$meta_price2.' $':'';?>
                                       </span></p>
                                       <a href="<?php the_permalink(); ?>" class="info">View Detail</a>
                                    </div>
@@ -203,8 +205,10 @@ Template Name: Template Menu
                          <div class="mask">
                             <h2><?php the_title();?></h2>
                             <p><span class="price">
-                            <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
-                            echo $meta_price!=''?'$'.$meta_price:'';?>
+                            <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
+                            echo $meta_price1!=''?'Medium '.$meta_price1.' $':'';?>
+                            <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
+                            echo $meta_price2!='Large '?''.$meta_price2." $":' ';?>
                             </span></p>
                             <a href="<?php the_permalink(); ?>" class="info">View Detail</a>
                          </div>
@@ -271,8 +275,10 @@ Template Name: Template Menu
                                    <div class="mask">
                                       <h2><?php the_title();?></h2>
                                       <p><span class="price">
-                                      <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
-                                      echo $meta_price!=''?'$'.$meta_price:'';?>
+                                      <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
+                                      echo $meta_price1!=''?'Medium '.$meta_price1.' $':'';?>
+                                      <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
+                                      echo $meta_price2!=''?'Large '.$meta_price2.' $':'';?>
                                       </span></p>
                                       <a href="<?php the_permalink(); ?>" class="info">View Detail</a>
                                    </div>
@@ -300,8 +306,10 @@ Template Name: Template Menu
                                    <div class="mask">
                                       <h2><?php the_title();?></h2>
                                       <p><span class="price">
-                                      <?php $meta_price = get_post_meta($post->ID, 'sp_product_price', true); 
-                                      echo $meta_price!=''?'$'.$meta_price:'';?>
+                                      <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
+                                      echo $meta_price1!=''?'Medium '.$meta_price1.' $':'';?>
+                                      <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
+                                      echo $meta_price2!=''?'Large '.$meta_price2.' $':'';?>
                                       </span></p>
                                       <a href="<?php the_permalink(); ?>" class="info">View Detail</a>
                                    </div>
