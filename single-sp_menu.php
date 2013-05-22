@@ -59,7 +59,7 @@
 	                <div class="prodcut-price">
 	                <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
 	                                      echo $meta_price1!=''?'Medium : $'.$meta_price1:'';?>
-	                <?php $meta_price2 = get_post_meta($post->ID, 'sp_medium_price', true); 
+	                <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
 	                                      echo $meta_price2!=''?'Large : $'.$meta_price2:'';?>
 	                </div>
 	                </div>
