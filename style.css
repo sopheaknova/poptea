@@ -1118,7 +1118,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
        display: block;
        position: relative;
        text-align: center; /* add more*/
-       margin-left: 20px;  /* add more*/
+      /* margin-left: 20px;*/  /* add more*/
     }
     .view h2 {
        text-transform: uppercase;
