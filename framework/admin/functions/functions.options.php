@@ -158,7 +158,7 @@ $of_options[] = array( 	"name" 		=> "Footer Text",
 				);
 				
 //Feature Slide
-$of_options[] = array( "name" => 'Featured Slideshow',
+/*$of_options[] = array( "name" => 'Featured Slideshow',
 						"type" => "heading",
 						"slug" => "feature"
 						);
@@ -182,23 +182,23 @@ $of_options[] = array( "name" => 'Effect',
 $of_options[] = array( "name" => 'Speed',
 					"desc" => 'speed of the transition',
 					"id" => "cycle_speed",
-					"std" => "1500",
+					"std" => "5000",
 					"type" => "text",
 					);
 
 $of_options[] = array( "name" => 'timeout',
 					"desc" => 'milliseconds between slide transitions',
 					"id" => "cycle_timeout",
-					"std" => "6000",
+					"std" => "5000",
 					"type" => "text",
-					);
+					);*/
 
-// Pop Tea Special
+// Pop Tea Top 12
 
-$of_options[] = array( "name" => "Poptea Specials",
+$of_options[] = array( "name" => "Poptea Our Top 12",
 					"type" => "heading");
 
-$of_options[] = array( "name" => 'Select Page Specials',
+$of_options[] = array( "name" => 'Select Page Our Top 12',
 					"id" => "page_special",
 					"type" => "select",
 					"options" => $of_pages

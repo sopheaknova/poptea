@@ -26,46 +26,7 @@
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <link rel="shortcut icon" href="<?php echo ($smof_data['theme_favico'] == '') ? SP_BASE_URL.'favicon.ico' : $smof_data['theme_favico']; ?>" type="image/x-icon" /> 
     
-    <?php wp_head(); ?>
-    
-    <?php if ( is_home() ) { ?>
-    <script type="text/javascript">
-	jQuery(document).ready(function($) {
-		
-		$('.featured-slideshow').cycle({
-                    fx:       '<?php echo $smof_data['cycle_effect']; ?>', //'scrollRight', 
-                    cleartype:  false,
-                    pause:    1,  // pause on hover
-                    easing: 'easeInOutBack', //easeOutBounce
-                    randomizeEffects: 0,
-                    speed: <?php echo $smof_data['cycle_speed']; ?>,
-                    timeout: <?php echo $smof_data['cycle_timeout']; ?>,
-                    slideExpr: '.item-slide',
-                    pager: ".slide-nav"
-                    /*before: onBeforeAct,
-                    after: onAfterAct*/
-                    
-            });
-			
-		function onBeforeAct(curr, next, opts, fwd){
-			$(next).find(".slide-content").css({'margin-top':'-900px'});
-	
-		}
-		function onAfterAct(curr, next, opts, fwd){
-			$(".slide-content").css({'display':'block'}).delay(200).stop().animate(
-																				 {'margin-top':'-410px'
-																				 }, 1000, 'easeInOutElastic');//easeOutQuad
-	
-		}
-		
-	});
-	
-	
-	
-	
-	</script>
-    <?php } ?>
-    
+	<?php wp_head(); ?>
 </head>
 
 <body>
@@ -78,7 +39,6 @@
                 <?php else: ?>
                 <h1><?php bloginfo('name'); ?></h1>
                 <?php endif; ?>
-                
             </a>
             </div>
             <div class="content-top clearfix">
@@ -89,7 +49,7 @@
                       
                       <?php if($smof_data['opent_time_1']!=''||$smof_data['opent_time_2']!=''){?>
                       <span>
-                            <a class="grey">Open Dially:</a>
+                            <a class="grey">Open Daily:</a>
                             <a class="dark-yellow"><?php echo $smof_data['opent_time_1'];?></a>
                       </span>
                       <?php }?>

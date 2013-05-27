@@ -37,7 +37,11 @@ Template Name: Template Special
                             <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
                             echo $meta_price2!=''?'Large '.$meta_price2.' $':'';?>
                             </span></p>
+                            <?php if($meta_price1=='' and $meta_price2==''){
+
+                            }else{?>
                             <a href="<?php the_permalink(); ?>" class="info">VIEW DETAIL</a>
+                            <?php }?>
                         </div>
                     </div> 
             
