@@ -325,7 +325,7 @@ $of_options[] = array( "name" => 'Select Page Contact',
 					"options" => $of_pages
 					);
 					
-$of_options[] = array( "name" => "Latitude",
+/*$of_options[] = array( "name" => "Latitude",
 					"desc" => "Latitude of google map see <a href='http://itouchmap.com'>itouchmap.com</a>",
 					"id" => "map_lat",
 					"std" => "11.558384",
@@ -337,7 +337,7 @@ $of_options[] = array( "name" => "Longitude",
 					"id" => "map_long",
 					"std" => "104.919965",
 					"type" => "text"
-					);										
+					);*/										
 					
 $of_options[] = array( "name" => "Address",
 					"desc" => "Enter your company or organization address",

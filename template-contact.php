@@ -63,25 +63,39 @@ if(isset($_POST['submitted'])) {
 <script type="text/javascript">					
   jQuery(document).ready(function ($)
 	{
-		var latitude = <?php echo $smof_data['map_lat'];?>;
-		var longitude = <?php echo $smof_data['map_long'];?>;
-		var myLatlng = new google.maps.LatLng(latitude, longitude);
-		var myOptions = {
-		  scrollwheel: false, 									  
-		  zoom: 16,
-		  center: myLatlng,
-		  mapTypeId: google.maps.MapTypeId.ROADMAP
-		}
-		var map = new google.maps.Map(document.getElementById("contact-map"), myOptions);
+		var locations = [
+			  ['POP TEA - @Kids City', 11.555852,104.921514, 3],
+			  ['POP TEA - Branch 2 - @TK Avenue', 11.580742,104.897879, 2],
+			  ['POP TEA - Branch 3 - @PP Night Market', 11.574042,104.927196, 1]
+			];
 		
 		var image = '<?php echo SP_BASE_URL;?>images/pop-tea-marker.png';
-		var marker = new google.maps.Marker({
-			position: myLatlng, 
+		
+		var map = new google.maps.Map(document.getElementById('contact-map'), {
+			  scrollwheel: false,
+			  zoom: 14,
+			  center: new google.maps.LatLng(11.570937,104.915829),
+			  mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+		
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+
+		for (i = 0; i < locations.length; i++) {  
+		  marker = new google.maps.Marker({
+			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
 			map: map,
 			icon: image,
 			animation: google.maps.Animation.DROP,
-			title:"<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>"
-		});
+		  });
+	
+		  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+			  infowindow.setContent(locations[i][0]);
+			  infowindow.open(map, marker);
+			}
+		  })(marker, i));
+		}
 	});
 </script>
 <div id="contact-map"></div>
