@@ -747,6 +747,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
                -moz-border-radius: 6px;
                     border-radius: 6px;
         }
+		.widget-slide h6 a:hover{color:#333;}
         .widget-nav {
             position: absolute;
             margin-top: -150px;

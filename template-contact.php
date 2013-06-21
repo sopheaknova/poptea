@@ -4,7 +4,7 @@ Template Name: Contact us Page
 */
 ?>
 <?php 
-global $smof_data;
+
 
 $nameError = '';
 $emailError = '';
@@ -39,7 +39,7 @@ if(isset($_POST['submitted'])) {
 		}
 			
 		if(!isset($hasError)) {
-			$emailTo = ''; //$smof_data['email'];
+			$emailTo = $smof_data['email'];
 			if (!isset($emailTo) || ($emailTo == '') ){
 				$emailTo = $smof_data['email'];
 			}
