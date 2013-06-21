@@ -1227,7 +1227,7 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
     /* -------------------------------------------------- */
     .header{
         overflow: hidden;
-        height: 165px;
+        height: 185px;
         border-bottom: 6px solid #682b7f;
         background: url(images/back-repeat.jpg) repeat;
     }
@@ -1283,6 +1283,15 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
         .language ul{margin-bottom:0; font-size:11px;}
         .language li{list-style:none; display:inline-block;margin-left:0; padding:0 3px;}
         .language li.kh{font-family:'Suwannaphum', Arial;}
+		
+		/* -------------------------------------------------- */
+        /*  Social Icons
+        /* -------------------------------------------------- */
+		.social-icons{text-align:right; float:right; color:#666;}
+			.social-icons a{position:relative;margin:0 2px 0 ; opacity:.7;}
+			.social-icons a:hover{ opacity:1;}
+			.social-icons.icon_24 img{width:24px; height:24px; margin-bottom:0;}
+			.social-icons.icon_16 img{width:16px; height:16px; margin-bottom:0;}
         
         /* -------------------------------------------------- */
         /*  Slideshow

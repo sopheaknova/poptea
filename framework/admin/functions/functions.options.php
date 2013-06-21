@@ -221,7 +221,24 @@ $of_options[] = array( "name" => "Number of products",
 					"std" => "8",
 					"desc" => "Limit number of posts to display Our Top 12",
 					"type" => "text"
-					);					
+					);		
+
+//Social Networking
+$of_options[] = array( 	"name" 		=> "Social Networking",
+						"type" 		=> "heading"
+				);
+				
+$of_options[] = array( "name" => "Facebook URL",
+						"id" => "social_facebook",
+						"std" => "",
+						"type" => "text"
+						);
+						
+$of_options[] = array( "name" => "Instagram URL",
+						"id" => "social_instagram",
+						"std" => "",
+						"type" => "text"
+						);																		
 
 
 // Pop Tea Menu
@@ -379,7 +396,7 @@ $of_options[] = array( "name" => "Email",
 					"id" => "email",
 					"std" => "info@popteacambodia.com",
 					"type" => "text"
-					);	
+					);						
 
 				
 // Backup Options
