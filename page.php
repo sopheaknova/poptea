@@ -29,7 +29,7 @@
         <?php get_sidebar(); ?>
         </div>
 
-        <?php else :?>
+        <?php else :  // check side bar ?>
 
         <?php if (have_posts()) while ( have_posts() ): the_post(); ?>
         <div class="page-content">

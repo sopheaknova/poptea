@@ -88,8 +88,8 @@ class sp_custom_list_widget extends WP_Widget {
 				$categories = get_categories($args);
 				foreach($categories as $cat){
 	 	   	  	          	  
-                    if($cat->parent == 0 ){ ?>
-                    <option <?php echo 'val?ue="'.$parent = $cat->name.'"'; selected( $taxonomyCat, $optId );?>><?php echo $parent = $cat->name; ?></option>
+                    if($cat->parent == 0 ){ ?>  
+                    <option <?php echo 'value="'.$parent = $cat->name.'"'; selected( $taxonomyCat, $optId );?>><?php echo $parent = $cat->name; ?></option>
                       	
                 <?php    }// end if parent
 	   	  	    }

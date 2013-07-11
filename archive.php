@@ -6,7 +6,7 @@
 
 	<div class="container content-inner clearfix">
         
-			<section class="main">
+		<section class="main">
 		
         <h1 class="title-mod">
 		<?php
@@ -53,9 +53,9 @@
 		<?php endif; ?>
 		
 
-			</section><!-- end #main -->
+		</section><!-- end #main -->
 
-			<?php get_sidebar(); ?>
+		<?php get_sidebar(); ?>
         
     </div><!-- end .container.clearfix -->    
 
