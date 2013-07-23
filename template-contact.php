@@ -64,7 +64,7 @@ if(isset($_POST['submitted'])) {
   jQuery(document).ready(function ($)
 	{
 		var locations = [
-			  ['POP TEA - @Kids City', 11.555852,104.921514, 3],
+			  ['POP TEA - @Kids City', 11.555825,104.921514, 3],
 			  ['POP TEA - Branch 2 - @TK Avenue', 11.580742,104.897879, 2],
 			  ['POP TEA - Branch 3 - @PP Night Market', 11.574042,104.927196, 1]
 			];
@@ -86,6 +86,7 @@ if(isset($_POST['submitted'])) {
 			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
 			map: map,
 			icon: image,
+			travelMode: google.maps.TravelMode["Driving"], //Driving or Walking or Bicycling or Transit
 			animation: google.maps.Animation.DROP,
 		  });
 	
