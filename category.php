@@ -22,7 +22,7 @@
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<article id="post-<?php the_ID)(; ?>" <?php post_class('clearfix'); ?>>
+				<article id="post-<?php echo $post->ID; ?> clearfix">
 
 					<?php get_template_part( 'content', get_post_format() ); ?>
 

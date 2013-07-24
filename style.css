@@ -1279,9 +1279,11 @@ input.placeholder, textarea.placeholder, .wpcf7 .watermark { color: #b0b0b0; }
             font-size: 21px;
             color: #4e4e4e
         }
-        .language{position:absolute; z-index:12; padding:3px; right:2px; top:2px;-moz-box-shadow: 0 1px 1px 0 #333; -webkit-box-shadow: 0 1px 1px 0 #333; box-shadow: 0 1px 1px 0 #333; background:#ffffff;}
+        /* .language{position:absolute; z-index:12; padding:3px; right:2px; top:2px;-moz-box-shadow: 0 1px 1px 0 #333; -webkit-box-shadow: 0 1px 1px 0 #333; box-shadow: 0 1px 1px 0 #333; background:#ffffff;} */
+        .language{padding:3px; right:2px; float:right;-moz-box-shadow: 0 1px 1px 0 #333; -webkit-box-shadow: 0 1px 1px 0 #333; box-shadow: 0 1px 1px 0 #333; background:#ffffff; margin-left: 30px; height: 16px;}
         .language ul{margin-bottom:0; font-size:11px;}
-        .language li{list-style:none; display:inline-block;margin-left:0; padding:0 3px;}
+        .language li{list-style:none; display:inline-block;margin-left:0; padding:0 3px; height: 14px; line-height: 14px;}
+        .language li img{margin-bottom: 0; margin-top: 2px}
         .language li.kh{font-family:'Suwannaphum', Arial;}
 		
 		/* -------------------------------------------------- */

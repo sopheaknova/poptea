@@ -123,12 +123,17 @@ function sp_register_styles() {
 	
 	if( !is_admin() ) {
 		wp_register_style( 'g_droidsans', 'http://fonts.googleapis.com/css?family=Droid+Sans', false, SP_SCRIPTS_VERSION );
+		wp_register_style( 'g_suwannaphum', 'http://fonts.googleapis.com/css?family=Suwannaphum', array(), THEME_VERSION );
 		wp_register_style( 'sp-theme-styles', SP_BASE_URL . 'style.css', false, THEME_VERSION );
 		wp_register_style( 'video-css',         SP_BASE_URL . 'css/video-js.min.css', false, SP_SCRIPTS_VERSION );
 		wp_register_style( 'audioplayerv1',    SP_BASE_URL . 'css/audioplayerv1.min.css', false, SP_SCRIPTS_VERSION );
 		//addon style 'PrettyPhoto'
 		if ( !WP_PRETTY_PHOTO_PLUGIN_ACTIVE ) {
 			wp_register_style('pretty_photo', SP_BASE_URL . 'js/prettyPhoto/css/prettyPhoto.css', false, SP_SCRIPTS_VERSION, 'screen');
+		}
+		
+		if ( ICL_LANGUAGE_CODE == 'kh' ) {
+			wp_register_style( 'khcss', SP_BASE_URL . 'css/kh.css', array(), THEME_VERSION );
 		}
 	} 
 
@@ -139,11 +144,15 @@ function sp_enqueue_styles() {
 
 	if( !is_admin() ) {
 		wp_enqueue_style('g_droidsans');
+		wp_enqueue_style('g_suwannaphum');
 		wp_enqueue_style('sp-theme-styles');
 		wp_enqueue_style('video-css');
 		wp_enqueue_style('audioplayerv1');
 		if ( !WP_PRETTY_PHOTO_PLUGIN_ACTIVE ) {
 			wp_enqueue_style('pretty_photo');
+		}
+		if ( ICL_LANGUAGE_CODE == 'kh' ) {	
+			wp_enqueue_style('khcss');
 		}
 	} 
 

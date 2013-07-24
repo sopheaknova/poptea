@@ -60,7 +60,7 @@
 				'exclude_from_search' => false,
 				'hierarchical'        => false,
 				'rewrite'             => array( 'slug' => $slug ),
-				'menu_position'       => $cpMenuPosition['menu'],
+				'menu_position'       => 30,
 				'menu_icon'           => SP_BASE_URL . 'framework/assets/img/icon-portfolio-01.png',
 				'supports'            => $supports,
 				'labels'              => array(

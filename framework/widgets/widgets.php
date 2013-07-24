@@ -14,7 +14,7 @@ add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 /* ---------------------------------------------------------------------- */
 function sp_widgets_init() {
 	
-	global $data;
+	global $smof_data;
 	
 	// Main Widget Area
 	register_sidebar(array(
@@ -37,7 +37,7 @@ function sp_widgets_init() {
 	));
 	
 	// Dynamic sidebar generate
-	$generate_sidebars = $data['sidebar_options']; 
+	$generate_sidebars = $smof_data['sidebar_options']; 
 	if($generate_sidebars){
 		foreach ($generate_sidebars as $sidebar) { 
 			if ( function_exists('register_sidebar') )

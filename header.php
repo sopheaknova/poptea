@@ -30,9 +30,11 @@
 </head>
 
 <body>
+
 <div class="header">
       <div class="header-content">
-            <div class="logo">
+      		
+      		<div class="logo">
             <a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>">
                 <?php if($smof_data['theme_logo'] !== '') : ?>
                 <img src="<?php echo $smof_data['theme_logo']; ?>" alt="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>">
@@ -41,17 +43,26 @@
                 <?php endif; ?>
             </a>
             </div>
+            
             <div class="content-top clearfix">
+            	<?php 
+				//WPML Language Switcher
+				if (function_exists('icl_get_languages')) {
+					languages_list_header(); 
+				}
+				?>
+            	<?php if ( (!empty($smof_data['social_facebook']) && $smof_data['social_facebook'] != ' ') || ( !empty( $smof_data['social_instagram'] ) && $smof_data['social_instagram'] != ' ' ) ) { ?> 
             	<div class="social-icons icon_24">
-                    <span>Join with us on:</span>
+                    <span><?php echo _e('Join with us on:', 'sptheme'); ?></span>
                 <?php if ( !empty($smof_data['social_facebook']) && $smof_data['social_facebook'] != ' ' ) { ?>    
-                    <a class="facebook-tieicon" title="Facebook" href="#" target="_blank"><img src="<?php echo SP_BASE_URL; ?>images/socialicons/facebook.png" alt="Facebook"  /></a>
+                    <a class="facebook-tieicon" title="Facebook" href="<?php echo $smof_data['social_facebook']; ?>" target="_blank"><img src="<?php echo SP_BASE_URL; ?>images/socialicons/facebook.png" alt="Facebook"  /></a>
                 <?php } ?>    
                 <?php if ( !empty( $smof_data['social_instagram'] ) && $smof_data['social_instagram'] != ' ' ) { ?>
-                    <a class="instagram-tieicon" title="Istagram" href="#" target="_blank"><img src="<?php echo SP_BASE_URL; ?>images/socialicons/instagram.png" alt="instagram"  /></a>
+                    <a class="instagram-tieicon" title="Istagram" href="<?php echo $smof_data['social_instagram']; ?>" target="_blank"><img src="<?php echo SP_BASE_URL; ?>images/socialicons/instagram.png" alt="instagram"  /></a>
                 <?php } ?>    
                   </div>
                   <div class="clear"></div>
+                  <?php } ?>   
                  <div class="top-menu">
                     <?php echo sp_main_navigation(); ?>
                  </div>
@@ -59,7 +70,7 @@
                       
                       <?php if($smof_data['opent_time_1']!=''||$smof_data['opent_time_2']!=''){?>
                       <span>
-                            <a class="grey">Open Daily:</a>
+                            <a class="grey"><?php echo _e('Open Daily:', 'sptheme'); ?></a>
                             <a class="dark-yellow"><?php echo $smof_data['opent_time_1'];?></a>
                       </span>
                       <?php }?>
@@ -75,7 +86,7 @@
                       </div> 
                       <?php }?> 
                       <?php if($smof_data['tel_1']!=''||$smof_data['tel_2']!=''){?>               
-                      <a class="grey">Tel:</a>
+                      <a class="grey"><?php echo _e('Tel:', 'sptheme'); ?></a>
                       &nbsp;<a id="big-num"><?php echo $smof_data['tel_1']." / ".$smof_data['tel_2'];?></a>
                       <?php }?>
                  </div>
@@ -86,5 +97,6 @@
       <!-- end .header-content -->
  </div>
  <!-- end .header -->
+
 
 
