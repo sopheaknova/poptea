@@ -33,14 +33,15 @@ Template Name: Template Special
                             <h2><?php the_title();?></h2>
                             <p><span class="price">
                             <?php $meta_price1 = get_post_meta($post->ID, 'sp_medium_price', true); 
-                            echo $meta_price1!=''?'Medium '.$meta_price1.' $':'';?>
+
+                            echo $meta_price1!=''?_e('Medium ','sptheme').$meta_price1._e(' $','sptheme'):'';?>
                             <?php $meta_price2 = get_post_meta($post->ID, 'sp_large_price', true); 
-                            echo $meta_price2!=''?'Large '.$meta_price2.' $':'';?>
+                            echo $meta_price2!=''?_e('Large ','sptheme').$meta_price2._e(' $','sptheme'):'';?>
                             </span></p>
                             <?php if($meta_price1=='' and $meta_price2==''){
 
                             }else{?>
-                            <a href="<?php the_permalink(); ?>" class="info">VIEW DETAIL</a>
+                            <a href="<?php the_permalink(); ?>" class="info"><?php echo _e('VIEW DETAIL','sptheme');?></a>
                             <?php }?>
                         </div>
                     </div> 

@@ -78,7 +78,7 @@
                       <?php $store = $smof_data['page_contact'];?>
                       <?php $page = get_page_by_path($store); // get page by slug name?>
                       <?php $page_url = get_page_link($page->ID); // id?>
-                      <span id="right"><a href="<?php echo $page_url;?>">GET MAP</a></span>
+                      <span id="right"><a href="<?php echo $page_url;?>"><?php echo _e('GET MAP', 'sptheme'); ?></a></span>
                      
                       <?php if($smof_data['opent_time_2']!=''){?>
                       <div id="sat-sun">

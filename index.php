@@ -78,7 +78,7 @@
                             <?php if($meta_price1=='' and $meta_price2==''){
 
                             }else{?>
-                            <a href="<?php the_permalink(); ?>" class="info">VIEW DETAIL</a>
+                            <a href="<?php the_permalink(); ?>" class="info"><?php echo _e('VIEW DETAIL', 'sptheme'); ?></a>
                             <?php }?>
                   
                         </div>
@@ -89,7 +89,7 @@
             <!-- END Gallery Hover Effects -->
             <div class="clearfix"></div>
             <div class="view-full-menu">
-               <h6><a href="<?php echo $menu_url;?>">VIEW FULL MENU</a></h6>
+               <h6><a href="<?php echo $menu_url;?>"><?php echo _e('VIEW FULL MENU', 'sptheme'); ?></a></h6>
             </div>
             <?php endif;?>
                

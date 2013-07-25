@@ -60,8 +60,8 @@ Template Name: Template Menu
                <?php $titleSize = trim($smof_data['txt_title_size']); ?>
                <?php $titleSweet = trim($smof_data['txt_title_sweet']); ?>
                <div class="option-item option-head">
-                  <span class="item-left"><h3><?php echo $titleSize!==''?$titleSize:'Choose your size';?></h3></span>
-                  <span class="item-right"><h3><?php echo $titleSweet!==''?$titleSweet:'Choose your sweetness';?></h3></span>
+                  <span class="item-left"><h3><?php echo $titleSize!==''?$titleSize:_e('Choose your size','sptheme');?></h3></span>
+                  <span class="item-right"><h3><?php echo $titleSweet!==''?$titleSweet:_e('Choose your sweetness','sptheme');?></h3></span>
                </div>
                <?php $sizeOpt = $smof_data['icon_size']; ?>
                <?php $levelSize = $smof_data['addoption_size']; ?>

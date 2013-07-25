@@ -21,7 +21,7 @@
 	    	</li>
 	    	<li>
 	    		<span class="comment-info">
-	    		<strong>Posted:</strong>&nbsp;<i><?php echo get_the_date('M d Y');?></i>
+	    		<strong><?php echo _e('Posted:','sptheme');?></strong>&nbsp;<i><?php echo get_the_date('M d Y');?></i>
 	    		</span>
 	    		<span class="comment-text">
 	    		<?php //echo sp_excerpt_length(20);
