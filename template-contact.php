@@ -21,7 +21,7 @@ if(isset($_POST['submitted'])) {
 			$emailError = __('Please enter your email address.', 'sptheme');
 			$hasError = true;
 		} else if (!eregi("^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}$", trim($_POST['email']))) {
-			$emailError = 'You entered an invalid email address.';
+			$emailError = __('You entered an invalid email address.', 'sptheme');
 			$hasError = true;
 		} else {
 			$email = trim($_POST['email']);
