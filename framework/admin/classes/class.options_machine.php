@@ -399,6 +399,31 @@ class Options_Machine {
 					$output .= '</ul>';
 					$output .= '<a href="#" class="button sidebar_add_button">Add New Sidebar</a></div>';
 				break;
+				
+				// Multiple Map Location
+				case 'multi_location':
+					$_id = strip_tags( strtolower($value['id']) );
+					$int = '';
+					$int = optionsframework_mlu_get_silentpost( $_id );
+					$output .= '<div class="slider"><ul id="'.$value['id'].'" rel="'.$int.'">';
+					$slides = $smof_data[$value['id']];
+					$count = count($slides);
+					if ($count < 2) {
+						$oldorder = 1;
+						$order = 1;
+						$output .= Options_Machine::optionsframework_multi_map_function($value['id'],$value['std'],$oldorder,$order,$int);
+					} else {
+						$i = 0;
+						foreach ($slides as $slide) {
+							$oldorder = $slide['order'];
+							$i++;
+							$order = $i;
+							$output .= Options_Machine::optionsframework_multi_map_function($value['id'],$value['std'],$oldorder,$order,$int);
+						}
+					}			
+					$output .= '</ul>';
+					$output .= '<a href="#" class="button multi_map_add_button">Add New Location</a></div>';
+				break;
 
 				// addoption
 
@@ -796,6 +821,57 @@ class Options_Machine {
 	
 		return $slider;
 		
+	}
+	
+	/*-----------------------------------------------------------------------------------*/
+	/* Multiple map location - optionsframework_multi_map_function */
+	/*-----------------------------------------------------------------------------------*/
+	
+	public static function optionsframework_multi_map_function($id,$std,$oldorder,$order,$int){
+	
+		$data = get_option(OPTIONS);
+		
+		$sidebar = '';
+		$slide = array();
+		$slide = $data[$id];
+		
+		if (isset($slide[$oldorder])) { $val = $slide[$oldorder]; } else {$val = $std;}
+		
+		//initialize all vars
+		$slidevars = array('latlong','description');
+		
+		foreach ($slidevars as $slidevar) {
+			if (!isset($val[$slidevar])) {
+				$val[$slidevar] = '';
+			}
+		}
+		
+		//begin slider interface	
+		if (!empty($val['latlong'])) {
+			$sidebar .= '<li><div class="slide_header"><strong>'.stripslashes($val['latlong']).'</strong>';
+			$first_sidebar_name = stripslashes($val['latlong']);
+		} else {
+			$sidebar .= '<li><div class="slide_header"><strong>Location '.$order.'</strong>';
+			$first_sidebar_name = 'Location ' .$order;
+		}
+		
+		$sidebar .= '<input type="hidden" class="slide of-input order" name="'. $id .'['.$order.'][order]" id="'. $id.'_'.$order .'_slide_order" value="'.$order.'" />';
+		$sidebar .= '<a class="slide_edit_button" href="#">Edit</a></div>';
+		
+		$sidebar .= '<div class="slide_body">';
+		
+		$sidebar .= '<label>Latitude and Longitude</label>';
+		$sidebar .= '<input class="slide of-input of-slider-title" name="'. $id .'['.$order.'][latlong]" id="'. $id .'_'.$order .'_slide_title" value="'. $first_sidebar_name . '" />';
+		$sidebar .= '<label>Marker message</label>';
+		$sidebar .= '<textarea class="slide of-input" name="'. $id .'['.$order.'][description]" id="'. $id .'_'.$order .'_slide_description" cols="8" rows="3">'.stripslashes($val['description']).'</textarea>';
+	
+		$sidebar .= '<a class="slide_delete_button" href="#">Delete</a>';
+		$sidebar .= '<div class="clear"></div>' . "\n";
+	
+		$sidebar .= '</div>';
+		$sidebar .= '</li>';
+	
+	return $sidebar;
 	}
 	
 	/*-----------------------------------------------------------------------------------*/

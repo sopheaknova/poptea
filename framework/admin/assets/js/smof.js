@@ -353,7 +353,7 @@ jQuery(document).ready(function($){
 		});	
 	});
 
-	// Sidebar
+	// Sidebar 
 	$(".sidebar_add_button").live('click', function(){		
 		var slidesContainer = $(this).prev();
 		var sliderId = slidesContainer.attr('id');
@@ -380,7 +380,37 @@ jQuery(document).ready(function($){
 		//of_image_upload(); // re-initialise upload image..
 		
 		return false; //prevent jumps, as always..
-	});	
+	});
+	
+	// Multiple Map Location 
+	$(".multi_map_add_button").live('click', function(){		
+		var slidesContainer = $(this).prev();
+		var sliderId = slidesContainer.attr('id');
+		var sliderInt = $('#'+sliderId).attr('rel');
+		
+		var numArr = $('#'+sliderId +' li').find('.order').map(function() { 
+			var str = this.id; 
+			str = str.replace(/\D/g,'');
+			str = parseFloat(str);
+			return str;			
+		}).get();
+		
+		var maxNum = Math.max.apply(Math, numArr);
+		if (maxNum < 1 ) { maxNum = 0};
+		var newNum = maxNum + 1;
+		
+		var newSlide = '<li class="temphide"><div class="slide_header"><strong>Location ' + newNum + '</strong><input type="hidden" class="slide of-input order" name="' + sliderId + '[' + newNum + '][order]" id="' + sliderId + '_slide_order-' + newNum + '" value="' + newNum + '"><a class="slide_edit_button" href="#">Edit</a></div><div class="slide_body" style="display: none; "><label>Latitude and Longitude</label><input class="slide of-input of-slider-title" name="' + sliderId + '[' + newNum + '][latlong]" id="' + sliderId + '_' + newNum + '_slide_title" value="Location' + newNum + '"><label>Marker message</label><textarea class="slide of-input" name="' + sliderId + '[' + newNum + '][description]" id="' + sliderId + '_' + newNum + '_slide_description" cols="8" rows="3"></textarea><a class="slide_delete_button" href="#">Delete</a><div class="clear"></div></div></li>';
+		
+		slidesContainer.append(newSlide);
+		$('.temphide').fadeIn('fast', function() {
+			$(this).removeClass('temphide');
+		});
+				
+		//of_image_upload(); // re-initialise upload image..
+		
+		return false; //prevent jumps, as always..
+	});
+		
     // Addoption
     $(".addoption_add_button").live('click', function(){		
 		var slidesContainer = $(this).prev();

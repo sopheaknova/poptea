@@ -64,10 +64,14 @@ if(isset($_POST['submitted'])) {
   jQuery(document).ready(function ($)
 	{
 		var locations = [
-			  ['POP TEA - @Kids City', 11.555825,104.921514, 3],
-			  ['POP TEA - Branch 2 - @TK Avenue', 11.580742,104.897879, 2],
-			  ['POP TEA - Branch 3 - @PP Night Market', 11.574042,104.927196, 1]
-			];
+		<?php 
+        	$locations = $smof_data['multi_map_location']; 
+        	
+        	foreach ( $locations as $location) {
+	        	echo '["' . $location['description'] . '", ' . $location['latlong'] . '],';
+        	}
+        ?>		
+        ];
 		
 		var image = '<?php echo SP_BASE_URL;?>images/pop-tea-marker.png';
 		
@@ -108,6 +112,7 @@ if(isset($_POST['submitted'])) {
         <div class="entry-contact"> 
     	<h1><?php echo the_title(); ?></h1>
         <div class="one_third">
+        
         <?php if (have_posts()) while ( have_posts() ): the_post(); ?>
 
 			<?php the_content(); ?>

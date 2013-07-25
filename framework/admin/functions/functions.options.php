@@ -396,7 +396,13 @@ $of_options[] = array( "name" => "Email",
 					"id" => "email",
 					"std" => "info@popteacambodia.com",
 					"type" => "text"
-					);						
+					);
+					
+$of_options[] = array( "name" => "Multiple Map Location",
+					"desc" => "Add your lat and long for each location",
+					"id" => "multi_map_location",
+					"std" => "",
+					"type" => "multi_location");											
 
 				
 // Backup Options
