@@ -53,7 +53,7 @@ function sp_theme_setup() {
 	add_theme_support( 'post-formats', array( 'video','gallery') ); // aside, gallery, image, link, quote, video, audio,status,chat
 
 	// add post-formats to post_type 'sp_menu'
-	add_post_type_support( 'sp_menu', 'post-formats' );
+	//add_post_type_support( 'sp_menu', 'post-formats' );
 
 	// Add default post and comments RSS feed links to head
 	add_theme_support('automatic-feed-links');

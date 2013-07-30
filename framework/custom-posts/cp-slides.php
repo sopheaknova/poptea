@@ -99,15 +99,11 @@
 		function sp_slide_cp_columns( $sp_slideCols ) {
 			$prefix = 'sp_slide-';
 
-			$sp_slideCols = array(
-				//standard columns
-				"cb"                 => '<input type="checkbox" />',
-				$prefix . "thumb"    => __( 'Image', 'sptheme_admin' ),
-				"title"              => __( 'Slide', 'sptheme_admin' ),
-				//$prefix . "category" => __( 'Category', 'sptheme_admin' ),
-				"date"               => __( 'Date', 'sptheme_admin' ),
-				"author"             => __( 'Created by', 'sptheme_admin' )
-			);
+			$sp_slideCols ['cb']		= '<input type="checkbox" />';
+			$sp_slideCols [$prefix.'thumb']		= __( 'Image', 'sptheme_admin' );
+			$sp_slideCols ['title']		= __( 'Menu', 'sptheme_admin' );
+			$sp_slideCols ['date']		= __( 'Date', 'sptheme_admin' );
+			$sp_slideCols ['author']	= __( 'Created by', 'sptheme_admin' );
 
 			return $sp_slideCols;
 		}

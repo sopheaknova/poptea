@@ -52,13 +52,30 @@
 			$cat_top_12 = $smof_data['cat_special'];
             $title_top_12 = (string)$smof_data['title_top_12'];
             $post_per_page = $smof_data['num-post-top-12'];
+            
+            $terms = get_terms('menu-category');
 
-            $query = new WP_Query(array('post_type'=>'sp_menu','menu-category'=>$cat_top_12,'posts_per_page'=>$post_per_page));
+            foreach ( $terms as $term ) {
+            	if ( $term->name == $cat_top_12 )
+            		$tax_id = $term->term_id;
+            }
+
+            $query = new WP_Query(array(
+            					'post_type'=>'sp_menu',
+            					'tax_query' => array(
+										array(
+											'taxonomy' => 'menu-category',
+											'field' => 'id',
+											'terms' => $tax_id
+										)
+									),
+            					'posts_per_page'=>$post_per_page
+            					));
             ?>
                   
             <?php if($query->have_posts()):?>
             
-			<?php echo '<h3><a href="' . $special_url . '">' .$title_top_12. '</a></h3>';?> 
+			<?php echo '<h3><a href="' . $special_url . '">' .$title_top_12 . $term_id .'</a></h3>';?> 
             
             <section class="gallery-hover clearfix">
             <?php while($query->have_posts()): $query->the_post();?>

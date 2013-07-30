@@ -99,15 +99,12 @@
 		function sp_menu_cp_columns( $sp_menuCols ) {
 			$prefix = 'sp_menu-';
 
-			$sp_menuCols = array(
-				//standard columns
-				"cb"                 => '<input type="checkbox" />',
-				$prefix . "thumb"    => __( 'Image', 'sptheme_admin' ),
-				"title"              => __( 'Menu', 'sptheme_admin' ),
-				$prefix . "category" => __( 'Category', 'sptheme_admin' ),
-				"date"               => __( 'Date', 'sptheme_admin' ),
-				"author"             => __( 'Created by', 'sptheme_admin' )
-			);
+			$sp_menuCols ['cb']		= '<input type="checkbox" />';
+			$sp_menuCols [$prefix.'thumb']		= __( 'Image', 'sptheme_admin' );
+			$sp_menuCols ['title']		= __( 'Menu', 'sptheme_admin' );
+			$sp_menuCols [$prefix.'category']		= __( 'Category', 'sptheme_admin' );
+			$sp_menuCols ['date']		= __( 'Date', 'sptheme_admin' );
+			$sp_menuCols ['author']	= __( 'Created by', 'sptheme_admin' );
 
 			return $sp_menuCols;
 		}
