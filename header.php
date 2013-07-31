@@ -46,11 +46,9 @@
             
             <div class="content-top clearfix">
             	<?php
-            	if ( current_user_can('edit_theme_options') ) { 
-				//WPML Language Switcher
+            	//WPML Language Switcher
 				if (function_exists('icl_get_languages')) {
 					languages_list_header(); 
-				}
 				}
 				?>
             	<?php if ( (!empty($smof_data['social_facebook']) && $smof_data['social_facebook'] != ' ') || ( !empty( $smof_data['social_instagram'] ) && $smof_data['social_instagram'] != ' ' ) ) { ?> 
