@@ -128,7 +128,7 @@ class sp_contact_info_widget extends WP_Widget {
 			//		$email = str_replace( $e, '<a href="#" data-address="' . sp_nospam( $e ) . '" class="email-nospam">' . sp_nospam( $e ) . '</a>', $email );
 			//	}
 			//}
-			$outAddress .= '<div class="email contact-info">E-mail : <a href="#">' . $email . '</a></div>';
+			$outAddress .= '<div class="email contact-info">E-mail : <a href="mailto:' . antispambot($email) . '">' . antispambot($email) . '</a></div>';
 		}
 
 		//phone numbers
