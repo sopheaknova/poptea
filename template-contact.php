@@ -9,6 +9,7 @@ Template Name: Contact Us
 $nameError = '';
 $emailError = '';
 $messageError = '';
+
 if(isset($_POST['submitted'])) {
 		if(trim($_POST['contactname']) === '') {
 			$nameError = __('Please enter your name.', 'sptheme');
@@ -40,14 +41,11 @@ if(isset($_POST['submitted'])) {
 			
 		if(!isset($hasError)) {
 			$emailTo = $smof_data['email'];
-			if (!isset($emailTo) || ($emailTo == '') ){
-				$emailTo = $smof_data['email'];
-			}
-			$subject = '[Contact Form] From '.$name;
+			$subject = 'From '.$name;
 			$body = "Name: $name \n\nEmail: $email \n\nComments: $messages";
 			$headers = 'From: '.$name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;
 			
-			mail($emailTo, $subject, $body, $headers);
+			wp_mail($emailTo, $subject, $body, $headers);
 			$emailSent = true;
 		}
 	
@@ -65,7 +63,7 @@ if(isset($_POST['submitted'])) {
 	{
 		var locations = [
 		<?php 
-        	$locations = $smof_data['multi_map_location']; 
+        	$locations = $smof_data['multi_map_location'];
         	
         	foreach ( $locations as $location) {
 	        	echo '["' . $location['description'] . '", ' . $location['latlong'] . '],';
@@ -74,7 +72,7 @@ if(isset($_POST['submitted'])) {
         ];
 		
 		var image = '<?php echo SP_BASE_URL;?>images/pop-tea-marker.png';
-		
+				
 		var map = new google.maps.Map(document.getElementById('contact-map'), {
 			  scrollwheel: false,
 			  zoom: 14,
